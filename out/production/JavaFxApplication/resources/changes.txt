@@ -1,1 +1,3 @@
 zmieniona liczność participation
+
+operation group - liczba obsłużonych zdarzeń jest bez sensu, bo można responses.size()

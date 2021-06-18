@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-import static models.exceptions.TypeMessageHelper.TYPE_ERROR_MESSAGE;
+import static models.exceptions.ExceptionMessageProvider.TYPE_ERROR_MESSAGE;
 
 public class Event {
 
