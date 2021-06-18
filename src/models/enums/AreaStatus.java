@@ -1,3 +1,6 @@
 package models.enums;
 
-public enum AreaStatus {OPEN, LOCKDOWN}
+public enum AreaStatus {
+    OPEN,
+    LOCKDOWN
+}

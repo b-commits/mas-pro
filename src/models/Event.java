@@ -1,9 +1,14 @@
 package models;
 
+import models.enums.EventType;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+
+import static models.exceptions.TypeMessageHelper.TYPE_ERROR_MESSAGE;
 
 public class Event {
 
@@ -11,6 +16,15 @@ public class Event {
     private LocalTime time;
     private String location;
     private List<Participation> participations = new ArrayList();
+    private EnumSet<EventType> eventTypes = EnumSet.of(EventType.DEFAULT_EVENT);
+
+    private int numCasualties;
+    private List<String> registrationNumbers;
+
+    private int stolenGoodsValue;
+    private int numStolenGoods;
+
+    private String assaultWeapon;
 
     public Event(LocalDate date, LocalTime time, String location) {
         this.date = date;
@@ -27,6 +41,66 @@ public class Event {
 
     public void removeParticipation(Participation participation) {
         participations.removeIf(participation1 -> participation1 == participation);
+    }
+
+    public int getNumCasualties() throws Exception {
+        if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
+            return numCasualties;
+        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+    }
+
+    public void setNumCasualties(int numCasualties) throws Exception {
+        if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
+            this.numCasualties = numCasualties;
+        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+    }
+
+    public List<String> getRegistrationNumbers() throws Exception {
+        if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
+            return registrationNumbers;
+        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+    }
+
+    public void setRegistrationNumbers(List<String> registrationNumbers) throws Exception {
+        if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
+            this.registrationNumbers = registrationNumbers;
+        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+    }
+
+    public int getStolenGoodsValue() throws Exception {
+        if (eventTypes.contains(EventType.THEFT)) {
+            return stolenGoodsValue;
+        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
+    }
+
+    public void setStolenGoodsValue(int stolenGoodsValue) throws Exception {
+        if (eventTypes.contains(EventType.THEFT)) {
+            this.stolenGoodsValue = stolenGoodsValue;
+        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
+    }
+
+    public int getNumStolenGoods() {
+        if (eventTypes.contains(EventType.THEFT)) {
+
+        }
+    }
+
+    public void setNumStolenGoods(int numStolenGoods) {
+        if (eventTypes.contains(EventType.THEFT)) {
+
+        }
+    }
+
+    public String getAssaultWeapon() {
+        if (eventTypes.contains(EventType.ASSAULT)) {
+
+        }
+    }
+
+    public void setAssaultWeapon(String assaultWeapon) {
+        if (eventTypes.contains(EventType.ASSAULT)) {
+
+        }
     }
 
     @Override
