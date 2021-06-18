@@ -1,7 +1,5 @@
 package models;
 
-import models.enums.PerpetratorStatus;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +10,14 @@ public class Perpetrator {
     private int height;
     private CriminalOrganization criminalOrganization;
     private List<String> offenses = new ArrayList<>();
+    private List<Participation> participations = new ArrayList();
 
-    public Perpetrator(String idNumber, String alias, int weight, int height) {
+    public Perpetrator(String idNumber, String alias, int weight, int height, CriminalOrganization criminalOrganization) {
         this.idNumber = idNumber;
         this.alias = alias;
         this.weight = weight;
         this.height = height;
+        criminalOrganization.addMember(this);
     }
 
     public void setCriminalOrganization(CriminalOrganization criminalOrganization) {
@@ -27,6 +27,17 @@ public class Perpetrator {
         }
         this.criminalOrganization = criminalOrganization;
         criminalOrganization.addMember(this);
+    }
+
+    public void addParticipation(Participation participation) {
+        if (!this.participations.contains(participation)) {
+            this.participations.add(participation);
+            participation.setPerpetrator(this);
+        }
+    }
+
+    public void removeParticipation(Participation participation) {
+        participations.removeIf(participation1 -> participation1 == participation);
     }
 
     @Override
@@ -41,4 +52,7 @@ public class Perpetrator {
                 ", offenses=" + offenses +
                 '}';
     }
+
+
+
 }

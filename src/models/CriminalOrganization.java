@@ -13,17 +13,14 @@ public class CriminalOrganization {
     private InternationalStatus internationalStatus;
     private Area area;
     private List<Perpetrator> members = new ArrayList<>();
-    private int numberOfMembers;
 
     public CriminalOrganization(String name, String business,
                                 OrganizationStatus organizationStatus,
-                                InternationalStatus internationalStatus,
-                                int numberOfMembers) {
+                                InternationalStatus internationalStatus) {
         this.name = name;
         this.business = business;
         this.organizationStatus = organizationStatus;
         this.internationalStatus = internationalStatus;
-        this.numberOfMembers = numberOfMembers;
     }
 
     public void addMember(Perpetrator member) {
@@ -54,15 +51,15 @@ public class CriminalOrganization {
         members.removeIf(member1 -> member1 == member);
     }
 
-    @Override
-    public String toString() {
-        return "CriminalOrganization{" +
-                "name='" + name + '\'' +
-                ", business='" + business + '\'' +
-                ", organizationStatus=" + organizationStatus +
-                ", area=" + area.getName() +
-                ", internationalStatus=" + internationalStatus +
-                ", numberOfMembers=" + members.size() +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "CriminalOrganization{" +
+//                "name='" + name + '\'' +
+//                ", business='" + business + '\'' +
+//                ", organizationStatus=" + organizationStatus +
+//                ", area=" + area.getName() +
+//                ", internationalStatus=" + internationalStatus +
+//                ", numberOfMembers=" + members.size() +
+//                '}';
+//    }
 }
