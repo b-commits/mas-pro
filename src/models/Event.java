@@ -1,6 +1,7 @@
 package models;
 
 import models.enums.EventType;
+import models.exceptions.InheritanceTypeException;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -43,64 +44,64 @@ public class Event {
         participations.removeIf(participation1 -> participation1 == participation);
     }
 
-    public int getNumCasualties() throws Exception {
+    public int getNumCasualties() throws InheritanceTypeException {
         if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
             return numCasualties;
-        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
     }
 
-    public void setNumCasualties(int numCasualties) throws Exception {
+    public void setNumCasualties(int numCasualties) throws InheritanceTypeException {
         if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
             this.numCasualties = numCasualties;
-        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
     }
 
-    public List<String> getRegistrationNumbers() throws Exception {
+    public List<String> getRegistrationNumbers() throws InheritanceTypeException {
         if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
             return registrationNumbers;
-        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
     }
 
-    public void setRegistrationNumbers(List<String> registrationNumbers) throws Exception {
+    public void setRegistrationNumbers(List<String> registrationNumbers) throws InheritanceTypeException {
         if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
             this.registrationNumbers = registrationNumbers;
-        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.CAR_ACCIDENT));
     }
 
-    public int getStolenGoodsValue() throws Exception {
+    public int getStolenGoodsValue() throws InheritanceTypeException {
         if (eventTypes.contains(EventType.THEFT)) {
             return stolenGoodsValue;
-        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
     }
 
-    public void setStolenGoodsValue(int stolenGoodsValue) throws Exception {
+    public void setStolenGoodsValue(int stolenGoodsValue) throws InheritanceTypeException {
         if (eventTypes.contains(EventType.THEFT)) {
             this.stolenGoodsValue = stolenGoodsValue;
-        } else throw new Exception(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
     }
 
-    public int getNumStolenGoods() {
+    public int getNumStolenGoods() throws InheritanceTypeException {
         if (eventTypes.contains(EventType.THEFT)) {
-
-        }
+            return getNumStolenGoods();
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
     }
 
-    public void setNumStolenGoods(int numStolenGoods) {
+    public void setNumStolenGoods(int numStolenGoods) throws InheritanceTypeException {
         if (eventTypes.contains(EventType.THEFT)) {
-
-        }
+            this.numStolenGoods = numStolenGoods;
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.THEFT));
     }
 
-    public String getAssaultWeapon() {
+    public String getAssaultWeapon() throws InheritanceTypeException {
         if (eventTypes.contains(EventType.ASSAULT)) {
-
-        }
+            return assaultWeapon;
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.ASSAULT));
     }
 
-    public void setAssaultWeapon(String assaultWeapon) {
+    public void setAssaultWeapon(String assaultWeapon) throws InheritanceTypeException {
         if (eventTypes.contains(EventType.ASSAULT)) {
-
-        }
+            this.assaultWeapon = assaultWeapon;
+        } else throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, EventType.ASSAULT));
     }
 
     @Override
