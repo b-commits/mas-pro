@@ -9,11 +9,13 @@ import static models.exceptions.ExceptionMessageProvider.GROUP_ID_TAKEN_MESSAGE;
 
 public class OperationalGroup {
     private static Map<String, OperationalGroup> groupIDs = new HashMap<>();
+    private String name;
     private OperationalGroupStatus operationalGroupStatus;
     private PoliceVehicle vehicle;
 
-    public OperationalGroup(String groupId) throws Exception {
+    public OperationalGroup(String groupId, String name) throws Exception {
         this.setGroupID(groupId);
+        this.name = name;
         this.operationalGroupStatus = OperationalGroupStatus.AWAITING_ORDERS;
     }
 
@@ -24,12 +26,19 @@ public class OperationalGroup {
     }
 
     public void setVehicle(PoliceVehicle vehicle) {
-        if (this.vehicle != null) {
+        if (this.vehicle != vehicle && this.vehicle != null) {
             this.vehicle.setOperationalGroup(null);
-            this.vehicle = null;
+            this.vehicle = vehicle;
+            this.vehicle.setOperationalGroup(this);
         }
-        this.vehicle = vehicle;
-        vehicle.setOperationalGroup(this);
+        if (this.vehicle == null) {
+            this.vehicle = vehicle;
+            this.vehicle.setOperationalGroup(this);
+        }
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     @Override
@@ -39,4 +48,6 @@ public class OperationalGroup {
                 ", vehicle=" + vehicle +
                 '}';
     }
+
+
 }

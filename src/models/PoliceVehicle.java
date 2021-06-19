@@ -19,12 +19,14 @@ public class PoliceVehicle {
         this.model = model;
         this.year = year;
         this.mileage = mileage;
+
         setRegistrationNumber(registrationNumber);
     }
 
-    @Deprecated
-    public PoliceVehicle(String brand) {
+    public PoliceVehicle(String brand, OperationalGroup group) {
         this.brand = brand;
+        this.operationalGroup = null;
+        group.setVehicle(this);
     }
 
     public void setRegistrationNumber(String registrationNumber) throws Exception {
@@ -34,12 +36,15 @@ public class PoliceVehicle {
     }
 
     public void setOperationalGroup(OperationalGroup operationalGroup) {
-        if (this.operationalGroup != null) {
+        if (this.operationalGroup != operationalGroup && this.operationalGroup != null) {
             this.operationalGroup.setVehicle(null);
-            this.operationalGroup = null;
+            this.operationalGroup = operationalGroup;
+            operationalGroup.setVehicle(this);
         }
-        this.operationalGroup = operationalGroup;
-        operationalGroup.setVehicle(this);
+        if (this.operationalGroup == null) {
+            this.operationalGroup = operationalGroup;
+            this.operationalGroup.setVehicle(this);
+        }
     }
 
     @Override
@@ -48,7 +53,8 @@ public class PoliceVehicle {
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", year=" + year +
-                ", mileage=" + mileage +
+                ", mileage=" + mileage + '\'' +
+                ", operationalGroup=" + operationalGroup.getName() +
                 '}';
     }
 }
