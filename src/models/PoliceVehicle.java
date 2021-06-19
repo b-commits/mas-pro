@@ -7,6 +7,7 @@ import java.util.Map;
 import static models.exceptions.ExceptionMessageProvider.REGISTRATION_ERROR_MESSAGE;
 
 public class PoliceVehicle {
+
     private String brand;
     private String model;
     private LocalDate year;

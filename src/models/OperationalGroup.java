@@ -11,6 +11,7 @@ import java.util.Map;
 import static models.exceptions.ExceptionMessageProvider.GROUP_ID_TAKEN_MESSAGE;
 
 public class OperationalGroup {
+
     private static Map<String, OperationalGroup> groupIDs = new HashMap<>();
     private List<Response> responses = new ArrayList<>();
     private List<Person> members = new ArrayList<>();

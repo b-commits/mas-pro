@@ -1,10 +1,14 @@
 package models;
 
 import models.enums.AreaStatus;
+import models.exceptions.InheritanceTypeException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Area {
+
+    private Person monitoringOperator;
     private final String name;
     private final String description;
     private final String dangerLevel;
@@ -42,5 +46,17 @@ public class Area {
                 ", areaStatus=" + areaStatus +
                 ", criminalOrganizationsSize="+ criminalOrganizations.size() +
                 '}';
+    }
+
+    public void setOperator(Person operator) throws InheritanceTypeException {
+        if (this.monitoringOperator !=  operator && this.monitoringOperator != null) {
+            this.monitoringOperator.setArea(null);
+            this.monitoringOperator = operator;
+            monitoringOperator.setArea(this);
+        }
+        if (this.monitoringOperator == null) {
+            this.monitoringOperator = operator;
+            this.monitoringOperator.setArea(this);
+        }
     }
 }

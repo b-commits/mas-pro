@@ -10,6 +10,7 @@ import static models.exceptions.ExceptionMessageProvider.FIREARM_NUM_REGISTRATIO
 import static models.providers.RegexPatternProvider.NUM_REGISTRATION_PATTERN;
 
 public class Firearm {
+
     private String model;
     private String numRegistration;
     private String type;

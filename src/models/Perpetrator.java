@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Perpetrator {
+
     private String idNumber;
     private String alias;
     private int weight;

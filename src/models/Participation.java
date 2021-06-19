@@ -5,6 +5,7 @@ import models.exceptions.IdentikitDescriptionTooLongException;
 import java.time.LocalTime;
 
 public class Participation {
+
     private static final int IDENTIKIT_DESC_MAX_LENGTH = 500;
     private LocalTime timeSpotted;
     private String identikitDescription;

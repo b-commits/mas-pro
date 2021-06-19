@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CriminalOrganization {
+
     private String name;
     private String business;
     private OrganizationStatus organizationStatus;

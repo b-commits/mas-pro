@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import static models.exceptions.ExceptionMessageProvider.OVER_LIMIT_ERROR_MESSAGE;
 
 public class Decoration {
+
     private String name;
     private String description;
     private LocalDate dateReceived;

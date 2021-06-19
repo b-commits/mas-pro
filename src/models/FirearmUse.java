@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class FirearmUse {
+
     private LocalDate date;
     private LocalTime time;
     private String typeRounds;

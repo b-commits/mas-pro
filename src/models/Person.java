@@ -12,6 +12,7 @@ import java.util.List;
 import static models.exceptions.ExceptionMessageProvider.TYPE_ERROR_MESSAGE;
 
 public class Person {
+
     private static final int MAX_BONUS = 1500;
     private static final int MAX_WEEKLY_HOURS = 18;
     private EnumSet<PersonType> personTypes = EnumSet.of(PersonType.DEFAULT_PERSON);
@@ -26,19 +27,21 @@ public class Person {
     private String numLicense;
     private LocalDate serviceStart;
     private Ranks rank;
-    private int bonus;
-    private int numCoursesCompleted;
+    private Integer bonus;
+    private Integer numCoursesCompleted;
     private List<Decoration> decorations = new ArrayList<>();
     private List<FirearmUse> firearmUses = new ArrayList<>();
     private List<String> awards = new ArrayList<>();
     private OperationalGroup operationalGroup;
 
     // PersonType.DISPATCHER
-    private int numCallsReceived;
-    private int avgCallTime;
+    private Integer numCallsReceived;
+    private Integer avgCallTime;
 
     // PersonType.MONITORING_OPERATOR
-    private int numDispatches;
+    private Area area;
+    private Integer numDispatches;
+
 
 
     public void addDecoration(Decoration decoration) throws InheritanceTypeException {
@@ -81,4 +84,19 @@ public class Person {
         this.operationalGroup = operationalGroup;
         operationalGroup.addMember(this);
     }
+
+    public void setArea(Area area) throws InheritanceTypeException {
+        if (!personTypes.contains(PersonType.MONITORING_OPERATOR))
+            throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, PersonType.MONITORING_OPERATOR));
+        if (this.area != area && this.area != null) {
+            this.area.setOperator(null);
+            this.area = area;
+            area.setOperator(this);
+        }
+        if (this.area == null) {
+            this.area = area;
+            this.area.setOperator(this);
+        }
+    }
+
 }
