@@ -1,7 +1,9 @@
 package models;
 
-import models.exceptions.IllegalRegistrationNumber;
+import models.exceptions.IllegalRegistrationNumberException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 
 import static models.exceptions.ExceptionMessageProvider.FIREARM_NUM_REGISTRATION_ERROR_MESSAGE;
@@ -13,8 +15,9 @@ public class Firearm {
     private String type;
     private String caliber;
     private String magSize;
+    private List<FirearmUse> firearmUses = new ArrayList<>();
 
-    public Firearm(String model, String numRegistration, String type, String caliber, String magSize) throws IllegalRegistrationNumber {
+    public Firearm(String model, String numRegistration, String type, String caliber, String magSize) throws IllegalRegistrationNumberException {
         this.setNumRegistration(numRegistration);
         this.model = model;
         this.type = type;
@@ -22,10 +25,21 @@ public class Firearm {
         this.magSize = magSize;
     }
 
-    private void setNumRegistration(String numRegistration) throws IllegalRegistrationNumber {
+    private void setNumRegistration(String numRegistration) throws IllegalRegistrationNumberException {
         Matcher matcher = NUM_REGISTRATION_PATTERN.matcher(numRegistration);
         if (matcher.matches()) this.numRegistration = numRegistration;
-        else throw new IllegalRegistrationNumber(FIREARM_NUM_REGISTRATION_ERROR_MESSAGE);
+        else throw new IllegalRegistrationNumberException(FIREARM_NUM_REGISTRATION_ERROR_MESSAGE);
     }
 
+    public void addFirearmUse(FirearmUse firearmUse) {
+        if (!firearmUses.contains(firearmUse)) {
+            firearmUses.add(firearmUse);
+            firearmUse.setFirearm(this);
+        }
+
+    }
+
+    public void removeFirearmUse(FirearmUse firearmUse) {
+        firearmUses.removeIf(firearmUse1 -> firearmUse1 == firearmUse);
+    }
 }

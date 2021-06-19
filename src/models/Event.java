@@ -17,6 +17,7 @@ public class Event {
     private LocalTime time;
     private String location;
     private List<Participation> participations = new ArrayList();
+    private List<Response> responses = new ArrayList();
     private EnumSet<EventType> eventTypes = EnumSet.of(EventType.DEFAULT_EVENT);
 
     private int numCasualties;
@@ -43,6 +44,14 @@ public class Event {
     public void removeParticipation(Participation participation) {
         participations.removeIf(participation1 -> participation1 == participation);
     }
+
+    public void addResponse(Response response) {
+        if (!responses.contains(response)) {
+            this.responses.add(response);
+            response.setEvent(this);
+        }
+    }
+
 
     public int getNumCasualties() throws InheritanceTypeException {
         if (eventTypes.contains(EventType.CAR_ACCIDENT)) {
@@ -112,5 +121,10 @@ public class Event {
                 ", location='" + location + '\'' +
                 ", participationsSize=" + participations.size() +
                 '}';
+    }
+
+
+    public void removeResponse(Response response) {
+        responses.removeIf(response1 -> response1 == response);
     }
 }

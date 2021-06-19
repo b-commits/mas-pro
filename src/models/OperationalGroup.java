@@ -2,13 +2,17 @@ package models;
 
 import models.enums.OperationalGroupStatus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static models.exceptions.ExceptionMessageProvider.GROUP_ID_TAKEN_MESSAGE;
 
 public class OperationalGroup {
     private static Map<String, OperationalGroup> groupIDs = new HashMap<>();
+    private List<Response> responses = new ArrayList<>();
+    private List<Person> members = new ArrayList<>();
     private String name;
     private OperationalGroupStatus operationalGroupStatus;
     private PoliceVehicle vehicle;
@@ -17,6 +21,20 @@ public class OperationalGroup {
         this.setGroupID(groupId);
         this.name = name;
         this.operationalGroupStatus = OperationalGroupStatus.AWAITING_ORDERS;
+    }
+
+    public void addResponse(Response response) {
+        if (!responses.contains(response)) {
+            this.responses.add(response);
+            response.setOperationalGroup(this);
+        }
+    }
+
+    public void addMember(Person member) {
+        if (!members.contains(member)) {
+            this.members.add(member);
+            member.setOperationalGroup(this);
+        }
     }
 
     private void setGroupID(String groupId) throws Exception {
@@ -49,5 +67,7 @@ public class OperationalGroup {
                 '}';
     }
 
-
+    public void removeResponse(Response response) {
+        responses.removeIf(response1 -> response1 == response);
+    }
 }
