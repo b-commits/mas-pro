@@ -4,6 +4,8 @@ import models.exceptions.IdentikitDescriptionTooLongException;
 
 import java.time.LocalTime;
 
+import static models.exceptions.ExceptionMessageProvider.IDENTIKIT_OVER_LIMIT_ERROR;
+
 public class Participation {
 
     private static final int IDENTIKIT_DESC_MAX_LENGTH = 500;
@@ -21,7 +23,7 @@ public class Participation {
 
     public void setIdentikitDescription(String identikitDescription) throws IdentikitDescriptionTooLongException {
         if (identikitDescription.length() < IDENTIKIT_DESC_MAX_LENGTH) this.identikitDescription = identikitDescription;
-        else throw new IdentikitDescriptionTooLongException(String.format("No more than %s characters allowed.", IDENTIKIT_DESC_MAX_LENGTH));
+        else throw new IdentikitDescriptionTooLongException(String.format(IDENTIKIT_OVER_LIMIT_ERROR, IDENTIKIT_DESC_MAX_LENGTH));
     }
 
     public void setPerpetrator(Perpetrator perpetrator) {

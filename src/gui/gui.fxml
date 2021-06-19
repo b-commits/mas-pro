@@ -35,7 +35,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -49,10 +48,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.ControllerGUI">
    <children>
-      <AnchorPane layoutY="27.0" prefHeight="650.0" prefWidth="151.0" style="-fx-background-color: #0c214a;">
+      <AnchorPane layoutY="27.0" prefHeight="1054.0" prefWidth="207.0" style="-fx-background-color: #0c214a;">
          <effect>
             <DropShadow height="23.23" radius="11.3" width="23.97">
                <color>
@@ -71,35 +69,60 @@
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Button>
-            <Label layoutX="36.0" layoutY="611.0" prefHeight="25.0" prefWidth="163.0" text="Zalogowano jako Jan Kowalski" textFill="WHITE" />
+            <Label layoutX="27.0" layoutY="1015.0" prefHeight="25.0" prefWidth="163.0" text="Zalogowano jako Jan Kowalski" textFill="WHITE" />
             <Text fill="WHITE" layoutX="45.0" layoutY="78.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="POLICJA" wrappingWidth="163.0">
                <font>
                   <Font name="Segoe UI Bold" size="38.0" />
                </font>
             </Text>
-            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="30.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="20.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../MAS PRO/outline_groups_white_48dp.png" />
+                  <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_groups_white_48dp.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="87.0" fitWidth="52.0" layoutX="29.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="87.0" fitWidth="52.0" layoutX="19.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../MAS PRO/outline_wifi_tethering_error_rounded_white_24dp.png" />
+                  <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_wifi_tethering_error_rounded_white_24dp.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="54.0" layoutX="28.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="54.0" layoutX="18.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../MAS PRO/outline_local_police_white_48dp.png" />
+                  <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_local_police_white_48dp.png" />
                </image>
             </ImageView>
-            <Button layoutX="92.0" layoutY="275.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="142.0" style="-fx-background-color: #0c214a;" text="Zdarzenia" textFill="WHITE">
+            <Button layoutX="93.0" layoutY="270.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="142.0" style="-fx-background-color: #0c214a;" text="Zdarzenia" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Button>
+            <Button layoutX="98.0" layoutY="365.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" style="-fx-background-color: #0c214a;" text="Osoby" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="98.0" layoutY="365.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" style="-fx-background-color: #0c214a;" text="Osoby" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="98.0" layoutY="446.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" style="-fx-background-color: #0c214a;" text="Info" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="24.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="87.0" fitWidth="52.0" layoutX="19.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_wifi_tethering_error_rounded_white_24dp.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="68.0" layoutY="81.0" text="projekt MAS" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <MenuBar layoutY="2.0" prefHeight="7.0" prefWidth="1000.0">
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1920.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -118,23 +141,22 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ListView disable="true" layoutX="660.0" layoutY="148.0" prefHeight="409.0" prefWidth="304.0" />
-      <Label layoutX="561.0" layoutY="62.0" text="Wyślij Grupę" textFill="#0c214a">
+      <Label layoutX="997.0" layoutY="49.0" text="Wyślij Grupę" textFill="#0c214a">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="375.0" layoutY="116.0" prefHeight="27.0" prefWidth="154.0" text="Aktywne zdarzenia:" textFill="#0c214a">
+      <Label layoutX="552.0" layoutY="118.0" prefHeight="27.0" prefWidth="154.0" text="Aktywne zdarzenia:" textFill="#0c214a">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="732.0" layoutY="117.0" prefHeight="25.0" prefWidth="148.0" text="Oczekujące Grupy:" textFill="#0c214a">
+      <Label layoutX="1419.0" layoutY="119.0" prefHeight="25.0" prefWidth="148.0" text="Oczekujące Grupy:" textFill="#0c214a">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="573.0" layoutY="591.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: #0c214a; -fx-border-radius: 0.9;" text="Wyślij" textFill="WHITE">
+      <Button layoutX="979.0" layoutY="1012.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: #0c214a; -fx-border-radius: 0.9;" text="Wyślij" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -145,11 +167,17 @@
             <DropShadow height="9.14" radius="3.2675" width="5.93" />
          </effect>
       </Button>
-      <TableView layoutX="273.0" layoutY="148.0" prefHeight="409.0" prefWidth="366.0">
+      <TableView layoutX="300.0" layoutY="161.0" prefHeight="825.0" prefWidth="657.0">
         <columns>
           <TableColumn prefWidth="197.0" text="C1" />
-          <TableColumn prefWidth="148.0" text="C2" />
+          <TableColumn prefWidth="161.0" text="C2" />
         </columns>
+      </TableView>
+      <TableView disable="true" layoutX="1152.0" layoutY="161.0" prefHeight="825.0" prefWidth="657.0">
+         <columns>
+            <TableColumn prefWidth="197.0" text="C1" />
+            <TableColumn prefWidth="161.0" text="C2" />
+         </columns>
       </TableView>
    </children>
 </AnchorPane>
