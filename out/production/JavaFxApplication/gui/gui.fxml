@@ -32,7 +32,6 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -48,7 +47,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.ControllerGUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MainMenuController">
    <children>
       <AnchorPane layoutY="27.0" prefHeight="1054.0" prefWidth="207.0" style="-fx-background-color: #0c214a;">
          <effect>
@@ -141,42 +140,37 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label layoutX="997.0" layoutY="49.0" text="Wyślij Grupę" textFill="#0c214a">
+      <Label layoutX="889.0" layoutY="48.0" text="Zorganizowane Grupy Przestępcze" textFill="#0c214a">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="552.0" layoutY="118.0" prefHeight="27.0" prefWidth="154.0" text="Aktywne zdarzenia:" textFill="#0c214a">
+      <Label layoutX="553.0" layoutY="118.0" prefHeight="27.0" prefWidth="182.0" text="Grupy przestępcze" textFill="#0c214a">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="1419.0" layoutY="119.0" prefHeight="25.0" prefWidth="148.0" text="Oczekujące Grupy:" textFill="#0c214a">
+      <Label layoutX="1438.0" layoutY="119.0" prefHeight="25.0" prefWidth="142.0" text="Znani członkowie:" textFill="#0c214a">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="979.0" layoutY="1012.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: #0c214a; -fx-border-radius: 0.9;" text="Wyślij" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <effect>
-            <DropShadow height="9.14" radius="3.2675" width="5.93" />
-         </effect>
-      </Button>
-      <TableView layoutX="300.0" layoutY="161.0" prefHeight="825.0" prefWidth="657.0">
+      <TableView fx:id="tblOrg" layoutX="315.0" layoutY="161.0" prefHeight="825.0" prefWidth="657.0">
         <columns>
-          <TableColumn prefWidth="197.0" text="C1" />
-          <TableColumn prefWidth="161.0" text="C2" />
+          <TableColumn fx:id="colOrgName" prefWidth="150.0" text="Imię" />
+          <TableColumn fx:id="colOrgBusiness" prefWidth="154.0" text="Działalność" />
+            <TableColumn fx:id="colOrgStatus" prefWidth="159.0" text="Status" />
+            <TableColumn fx:id="colOrgIntStatus" prefWidth="193.0" text="Status międzynarodowy" />
         </columns>
       </TableView>
-      <TableView disable="true" layoutX="1152.0" layoutY="161.0" prefHeight="825.0" prefWidth="657.0">
+      <TableView fx:id="tblMem" layoutX="1147.0" layoutY="161.0" prefHeight="825.0" prefWidth="657.0">
          <columns>
-            <TableColumn prefWidth="197.0" text="C1" />
-            <TableColumn prefWidth="161.0" text="C2" />
+            <TableColumn fx:id="colMemID" prefWidth="107.0" text="ID" />
+            <TableColumn fx:id="colMemAlias" prefWidth="128.0" text="Alias" />
+            <TableColumn fx:id="colMemHeight" prefWidth="115.0" text="Wzrost" />
+            <TableColumn fx:id="colMemWeight" prefWidth="85.0" text="Waga" />
+            <TableColumn fx:id="colMemStatus" prefWidth="75.0" text="Status" />
+            <TableColumn fx:id="colMemNumOffenses" prefWidth="146.0" text="Przestępstwa" />
          </columns>
       </TableView>
    </children>

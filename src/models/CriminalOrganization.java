@@ -24,10 +24,16 @@ public class CriminalOrganization {
         this.internationalStatus = internationalStatus;
     }
 
+    @Deprecated
+    public CriminalOrganization(String name, String business) {
+        this.name = name;
+        this.business = business;
+    }
+
     public void addMember(Perpetrator member) {
         if (!members.contains(member)) {
             members.add(member);
-            member.setCriminalOrganization(this);
+            member.addCriminalOrganization(this);
         }
     }
 
