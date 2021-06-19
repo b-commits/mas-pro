@@ -1,5 +1,7 @@
 package models;
 
+import models.exceptions.InheritanceTypeException;
+
 import java.time.LocalDate;
 
 import static models.exceptions.ExceptionMessageProvider.OVER_LIMIT_ERROR_MESSAGE;
@@ -21,7 +23,7 @@ public class Decoration {
         else throw new Exception(OVER_LIMIT_ERROR_MESSAGE);
     }
 
-    public void setReceiver(Person receiver) {
+    public void setReceiver(Person receiver) throws InheritanceTypeException {
         if (this.receiver != null) {
             this.receiver.removeDecoration(this);
             this.receiver = null;

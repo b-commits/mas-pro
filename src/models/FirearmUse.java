@@ -1,5 +1,7 @@
 package models;
 
+import models.exceptions.InheritanceTypeException;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -11,7 +13,7 @@ public class FirearmUse {
     private Person shooter;
     private Firearm firearm;
 
-    public FirearmUse(LocalDate date, LocalTime time, String typeRounds, int numRounds, Person shooter, Firearm firearm) {
+    public FirearmUse(LocalDate date, LocalTime time, String typeRounds, int numRounds, Person shooter, Firearm firearm) throws InheritanceTypeException {
         this.date = date;
         this.time = time;
         this.typeRounds = typeRounds;
@@ -29,7 +31,7 @@ public class FirearmUse {
         firearm.addFirearmUse(this);
     }
 
-    public void setShooter(Person shooter) {
+    public void setShooter(Person shooter) throws InheritanceTypeException {
         if (this.shooter != null) {
             this.shooter.removeFirearmUse(this);
             this.shooter = null;

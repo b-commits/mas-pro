@@ -1,6 +1,7 @@
 package models;
 
 import models.enums.OperationalGroupStatus;
+import models.exceptions.InheritanceTypeException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class OperationalGroup {
         }
     }
 
-    public void addMember(Person member) {
+    public void addMember(Person member) throws InheritanceTypeException {
         if (!members.contains(member)) {
             this.members.add(member);
             member.setOperationalGroup(this);
@@ -69,5 +70,9 @@ public class OperationalGroup {
 
     public void removeResponse(Response response) {
         responses.removeIf(response1 -> response1 == response);
+    }
+
+    public void removeOperationalGroup(Person member) {
+        members.removeIf(member1 -> member1 == member);
     }
 }
