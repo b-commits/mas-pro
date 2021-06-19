@@ -1,3 +1,7 @@
 zmieniona liczność participation
 
 operation group - liczba obsłużonych zdarzeń jest bez sensu, bo można responses.size()
+
+zapomnialem wywalic wyliczalnego z odpowiedzi na zdarzenie
+
+w response w /czas przybycia chodzi o to, ile zajęło przybicie obliczane jako różnica czasu odpowiedzi (przybycia) i zgloszneia
