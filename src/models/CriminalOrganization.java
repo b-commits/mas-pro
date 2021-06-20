@@ -3,10 +3,11 @@ package models;
 import models.enums.InternationalStatus;
 import models.enums.OrganizationStatus;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CriminalOrganization {
+public class CriminalOrganization implements Serializable {
 
     private static List<CriminalOrganization> criminalOrganizationExtent = new ArrayList<>();
     private String name;

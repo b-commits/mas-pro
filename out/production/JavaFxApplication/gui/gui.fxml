@@ -164,11 +164,11 @@
       <TableView fx:id="tblMem" layoutX="1151.0" layoutY="161.0" prefHeight="840.0" prefWidth="715.0">
          <columns>
             <TableColumn fx:id="colMemID" prefWidth="107.0" text="ID" />
-            <TableColumn fx:id="colMemAlias" prefWidth="128.0" text="Alias" />
-            <TableColumn fx:id="colMemHeight" prefWidth="115.0" text="Wzrost" />
-            <TableColumn fx:id="colMemWeight" prefWidth="85.0" text="Waga" />
-            <TableColumn fx:id="colMemStatus" prefWidth="75.0" text="Status" />
-            <TableColumn fx:id="colMemNumOffenses" prefWidth="146.0" text="Przestępstwa" />
+            <TableColumn fx:id="colMemAlias" prefWidth="111.0" text="Alias" />
+            <TableColumn fx:id="colMemHeight" prefWidth="132.0" text="Wzrost [cm]" />
+            <TableColumn fx:id="colMemWeight" prefWidth="115.0" text="Waga [kg]" />
+            <TableColumn fx:id="colMemStatus" prefWidth="124.0" text="Status" />
+            <TableColumn fx:id="colMemNumOffenses" prefWidth="125.0" text="Przestępstwa" />
          </columns>
       </TableView>
       <Label layoutX="866.0" layoutY="1026.0" opacity="0.28" prefHeight="27.0" prefWidth="454.0" style="co: #0c214a;" text="Wybierz grupę, aby wyświetlić informację o jej członkach" textFill="#0c214a">

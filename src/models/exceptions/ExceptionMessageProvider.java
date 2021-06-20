@@ -8,4 +8,8 @@ public class ExceptionMessageProvider {
     public static final String FIREARM_NUM_REGISTRATION_ERROR_MESSAGE = "Registration number does not match the pattern.";
     public static final String OVER_LIMIT_ERROR_MESSAGE = "Over limit";
     public static final String IDENTIKIT_OVER_LIMIT_ERROR = "No more than %s characters allowed.";
+    public static final String NO_CONTENT_ORG_MESSAGE = "Brak danych o organizacjach przestępczych.";
+    public static final String NO_CONTENT_MEM_MESSAGE = "Brak danych o przestępcach.";
+
+
 }

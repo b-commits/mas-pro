@@ -3,6 +3,10 @@ package models;
 import models.enums.OperationalGroupStatus;
 import models.exceptions.InheritanceTypeException;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +14,7 @@ import java.util.Map;
 
 import static models.exceptions.ExceptionMessageProvider.GROUP_ID_TAKEN_MESSAGE;
 
-public class OperationalGroup {
-
+public class OperationalGroup implements Serializable {
 
     private static Map<String, OperationalGroup> groupIDs = new HashMap<>();
     private static List<OperationalGroup> operationalGroupExtent = new ArrayList<>();
@@ -79,4 +82,7 @@ public class OperationalGroup {
     public void removeOperationalGroup(Person member) {
         members.removeIf(member1 -> member1 == member);
     }
+
+
+
 }

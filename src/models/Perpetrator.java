@@ -2,10 +2,11 @@ package models;
 
 import models.enums.PerpetratorStatus;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Perpetrator {
+public class Perpetrator implements Serializable {
 
     private static List<Perpetrator> perpetratorExtent = new ArrayList<>();
     private String idNumber;

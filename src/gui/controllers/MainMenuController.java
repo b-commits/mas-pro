@@ -1,9 +1,9 @@
 package gui.controllers;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,6 +17,8 @@ import java.util.ResourceBundle;
 
 import static gui.resources.SampleData.generateOrganizations;
 import static helpers.Logger.log;
+import static models.exceptions.ExceptionMessageProvider.NO_CONTENT_MEM_MESSAGE;
+import static models.exceptions.ExceptionMessageProvider.NO_CONTENT_ORG_MESSAGE;
 
 public class MainMenuController implements Initializable {
 
@@ -33,14 +35,22 @@ public class MainMenuController implements Initializable {
     @FXML private TableColumn<Perpetrator, String> colMemWeight;
     @FXML private TableColumn<Perpetrator, String> colMemStatus;
 
+    /**
+     * Sets cell value factories on all fields in organization table in order to handle events. PropertyValueFactory args
+     * must match the attribute names in appropriate classes.
+     */
     private void populateOrganizations() {
         colOrgBusiness.setCellValueFactory(new PropertyValueFactory<>("business"));
         colOrgName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colOrgIntStatus.setCellValueFactory(new PropertyValueFactory<>("internationalStatus"));
         colOrgStatus.setCellValueFactory(new PropertyValueFactory<>("organizationStatus"));
-        tblOrg.setItems(getOrganizations());
+        tblOrg.setItems(generateOrganizations());
     }
 
+    /**
+     * Sets cell value factories on all fields in perpetrator table in order to handle events. PropertyValueFactory args
+     * must match the attribute names in appropriate classes.
+     */
     private void populatePerpetrators() {
         colMemID.setCellValueFactory(new PropertyValueFactory<>("idNumber"));
         colMemAlias.setCellValueFactory(new PropertyValueFactory<>("alias"));
@@ -49,23 +59,30 @@ public class MainMenuController implements Initializable {
         colMemStatus.setCellValueFactory(new PropertyValueFactory<>("idNumber"));
     }
 
+    /**
+     * Sets a listener that awaits for row selection and populates perpetrator table accordingly on click.
+     */
     private void handleOrgChoice() {
         tblOrg.setOnMouseClicked((MouseEvent event) -> {
-            if(event.getButton().equals(MouseButton.PRIMARY)){
+            if(event.getButton().equals(MouseButton.PRIMARY)) {
                 log(tblOrg.getSelectionModel().getSelectedItem());
                 tblMem.setItems(FXCollections.observableArrayList(tblOrg.getSelectionModel().getSelectedItem().getMembers()));
             }
         });
     }
 
-    public ObservableList<CriminalOrganization> getOrganizations() {
-        return generateOrganizations();
+    /**
+     * Sets default error message in case no content is present.
+     */
+    private void setPlaceholders() {
+        tblOrg.setPlaceholder(new Label(NO_CONTENT_ORG_MESSAGE));
+        tblMem.setPlaceholder(new Label(NO_CONTENT_MEM_MESSAGE));
     }
 
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setPlaceholders();
         handleOrgChoice();
+        populatePerpetrators();
         populateOrganizations();
     }
 
