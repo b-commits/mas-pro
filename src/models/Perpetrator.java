@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Perpetrator {
 
+    private static List<Perpetrator> perpetratorExtent = new ArrayList<>();
     private String idNumber;
     private String alias;
     private int weight;
@@ -23,6 +24,7 @@ public class Perpetrator {
         this.height = height;
         this.perpetratorStatus = perpetratorStatus;
         criminalOrganization.addMember(this);
+        perpetratorExtent.add(this);
     }
 
     public void addCriminalOrganization(CriminalOrganization criminalOrganization) {
@@ -43,6 +45,26 @@ public class Perpetrator {
         participations.removeIf(participation1 -> participation1 == participation);
     }
 
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public PerpetratorStatus getPerpetratorStatus() {
+        return perpetratorStatus;
+    }
+
     @Override
     public String toString() {
         String numOrg = this.criminalOrganizations.size() == 0 ? "Unaffiliated" : String.valueOf(criminalOrganizations.size());
@@ -55,7 +77,6 @@ public class Perpetrator {
                 ", offenses=" + offenses +
                 '}';
     }
-
 
 
 }

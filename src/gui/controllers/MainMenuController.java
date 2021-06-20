@@ -7,13 +7,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import models.CriminalOrganization;
 import models.Perpetrator;
-import models.enums.InternationalStatus;
-import models.enums.OrganizationStatus;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static gui.resources.SampleData.generateOrganizations;
+import static helpers.Logger.log;
 
 public class MainMenuController implements Initializable {
 
@@ -22,34 +25,49 @@ public class MainMenuController implements Initializable {
     @FXML private TableColumn<CriminalOrganization, String> colOrgBusiness;
     @FXML private TableColumn<CriminalOrganization, String> colOrgStatus;
     @FXML private TableColumn<CriminalOrganization, String> colOrgIntStatus;
+
     @FXML private TableView<Perpetrator> tblMem;
     @FXML private TableColumn<Perpetrator, String> colMemID;
     @FXML private TableColumn<Perpetrator, String> colMemAlias;
     @FXML private TableColumn<Perpetrator, String> colMemHeight;
     @FXML private TableColumn<Perpetrator, String> colMemWeight;
     @FXML private TableColumn<Perpetrator, String> colMemStatus;
-    @FXML private TableColumn<Perpetrator, String> colMemNumOffenses;
 
     private void populateOrganizations() {
-        colOrgName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colOrgBusiness.setCellValueFactory(new PropertyValueFactory<>("business"));
-        tblOrg.setItems(getOrgs());
+        colOrgName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colOrgIntStatus.setCellValueFactory(new PropertyValueFactory<>("internationalStatus"));
+        colOrgStatus.setCellValueFactory(new PropertyValueFactory<>("organizationStatus"));
+        tblOrg.setItems(getOrganizations());
     }
 
-    public ObservableList<CriminalOrganization> getOrgs() {
-        ObservableList<CriminalOrganization> organizations = FXCollections.observableArrayList();
-        CriminalOrganization organization1 = new CriminalOrganization("Los matadores", "Drugs");
-        CriminalOrganization organization2 = new CriminalOrganization("La Ropa Vieja", "Theft");
-        CriminalOrganization organization3 = new CriminalOrganization("Niszczyciele Trybun", "Hooligans");
-        organizations.add(organization1);
-        organizations.add(organization2);
-        organizations.add(organization3);
-        return organizations;
+    private void populatePerpetrators() {
+        colMemID.setCellValueFactory(new PropertyValueFactory<>("idNumber"));
+        colMemAlias.setCellValueFactory(new PropertyValueFactory<>("alias"));
+        colMemHeight.setCellValueFactory(new PropertyValueFactory<>("height"));
+        colMemWeight.setCellValueFactory(new PropertyValueFactory<>("weight"));
+        colMemStatus.setCellValueFactory(new PropertyValueFactory<>("idNumber"));
+    }
+
+    private void handleOrgChoice() {
+        tblOrg.setOnMouseClicked((MouseEvent event) -> {
+            if(event.getButton().equals(MouseButton.PRIMARY)){
+                log(tblOrg.getSelectionModel().getSelectedItem());
+                tblMem.setItems(FXCollections.observableArrayList(tblOrg.getSelectionModel().getSelectedItem().getMembers()));
+            }
+        });
+    }
+
+    public ObservableList<CriminalOrganization> getOrganizations() {
+        return generateOrganizations();
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        handleOrgChoice();
         populateOrganizations();
     }
+
+
 }

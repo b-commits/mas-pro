@@ -13,25 +13,24 @@ import static models.exceptions.ExceptionMessageProvider.TYPE_ERROR_MESSAGE;
 
 public class Event {
 
+    private static List<Event> eventExtent = new ArrayList<>();
     private LocalDate date;
     private LocalTime time;
     private String location;
     private List<Participation> participations = new ArrayList();
     private List<Response> responses = new ArrayList();
     private EnumSet<EventType> eventTypes = EnumSet.of(EventType.DEFAULT_EVENT);
-
     private int numCasualties;
     private List<String> registrationNumbers;
-
     private int stolenGoodsValue;
     private int numStolenGoods;
-
     private String assaultWeapon;
 
     public Event(LocalDate date, LocalTime time, String location) {
         this.date = date;
         this.time = time;
         this.location = location;
+        eventExtent.add(this);
     }
 
     public void addParticipation(Participation participation) {

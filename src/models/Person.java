@@ -15,8 +15,8 @@ public class Person {
 
     private static final int MAX_BONUS = 1500;
     private static final int MAX_WEEKLY_HOURS = 18;
+    private static List<Person> personExtent = new ArrayList<>();
     private EnumSet<PersonType> personTypes = EnumSet.of(PersonType.DEFAULT_PERSON);
-
     // PersonType.DEFAULT_PERSON
     private String numPersonalIdentity;
     private String name;
@@ -42,6 +42,13 @@ public class Person {
     private Area area;
     private Integer numDispatches;
 
+    public Person(String numPersonalIdentity, String name, String email, String numPhone) {
+        this.numPersonalIdentity = numPersonalIdentity;
+        this.name = name;
+        this.email = email;
+        this.numPhone = numPhone;
+        personExtent.add(this);
+    }
 
 
     public void addDecoration(Decoration decoration) throws InheritanceTypeException {

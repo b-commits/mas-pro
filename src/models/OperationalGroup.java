@@ -12,7 +12,9 @@ import static models.exceptions.ExceptionMessageProvider.GROUP_ID_TAKEN_MESSAGE;
 
 public class OperationalGroup {
 
+
     private static Map<String, OperationalGroup> groupIDs = new HashMap<>();
+    private static List<OperationalGroup> operationalGroupExtent = new ArrayList<>();
     private List<Response> responses = new ArrayList<>();
     private List<Person> members = new ArrayList<>();
     private String name;
@@ -23,6 +25,7 @@ public class OperationalGroup {
         this.setGroupID(groupId);
         this.name = name;
         this.operationalGroupStatus = OperationalGroupStatus.AWAITING_ORDERS;
+        operationalGroupExtent.add(this);
     }
 
     public void addResponse(Response response) {

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class CriminalOrganization {
 
+    private static List<CriminalOrganization> criminalOrganizationExtent = new ArrayList<>();
     private String name;
     private String business;
     private OrganizationStatus organizationStatus;
@@ -22,6 +23,7 @@ public class CriminalOrganization {
         this.business = business;
         this.organizationStatus = organizationStatus;
         this.internationalStatus = internationalStatus;
+        criminalOrganizationExtent.add(this);
     }
 
     @Deprecated
@@ -37,6 +39,10 @@ public class CriminalOrganization {
         }
     }
 
+    public Area getArea() {
+        return area;
+    }
+
     public void setArea(Area area) {
         if (this.area != null) {
             this.area.removeCriminalOrganization(this);
@@ -46,13 +52,15 @@ public class CriminalOrganization {
         area.addCriminalOrganization(this);
     }
 
-    public Area getArea() {
-        return area;
-    }
-
     public String getName() {
         return name;
     }
+
+    public String getBusiness() { return business; }
+
+    public String getInternationalStatus() { return internationalStatus.name(); }
+
+    public String getOrganizationStatus() { return organizationStatus.name(); }
 
     public void removeCriminalOrganization(Perpetrator member) {
         members.removeIf(member1 -> member1 == member);
@@ -60,13 +68,18 @@ public class CriminalOrganization {
 
     @Override
     public String toString() {
+        String areaInfo = area == null ? "No area" : area.getName();
         return "CriminalOrganization{" +
                 "name='" + name + '\'' +
                 ", business='" + business + '\'' +
                 ", organizationStatus=" + organizationStatus +
-                ", area=" + area.getName() +
+                ", area=" + areaInfo +
                 ", internationalStatus=" + internationalStatus +
                 ", numberOfMembers=" + members.size() +
                 '}';
+    }
+
+    public List<Perpetrator> getMembers() {
+        return members;
     }
 }

@@ -1,10 +1,14 @@
 package models;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class Response {
+
+    private static List<Response> responseExtent = new ArrayList<>();
     private LocalTime timeReceived;
     private LocalTime timeArrived;
     private int numWitnessTestimony;
@@ -17,6 +21,7 @@ public class Response {
         this.numWitnessTestimony = numWitnessTestimony;
         event.addResponse(this);
         operationalGroup.addResponse(this);
+        responseExtent.add(this);
     }
 
     public void setOperationalGroup(OperationalGroup operationalGroup) {

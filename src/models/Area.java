@@ -8,18 +8,20 @@ import java.util.List;
 
 public class Area {
 
-    private Person monitoringOperator;
+    private static final List<Area> areaExtent = new ArrayList<>();
     private final String name;
     private final String description;
     private final String dangerLevel;
     private final AreaStatus areaStatus;
     private final List<CriminalOrganization> criminalOrganizations = new ArrayList<>();
+    private Person monitoringOperator;
 
     public Area(String name, String description, String dangerLevel) {
         this.name = name;
         this.description = description;
         this.dangerLevel = dangerLevel;
         this.areaStatus = AreaStatus.OPEN;
+        areaExtent.add(this);
     }
 
     public void addCriminalOrganization(CriminalOrganization criminalOrganization) {
@@ -44,12 +46,12 @@ public class Area {
                 ", description='" + description + '\'' +
                 ", dangerLevel='" + dangerLevel + '\'' +
                 ", areaStatus=" + areaStatus +
-                ", criminalOrganizationsSize="+ criminalOrganizations.size() +
+                ", criminalOrganizationsSize=" + criminalOrganizations.size() +
                 '}';
     }
 
     public void setOperator(Person operator) throws InheritanceTypeException {
-        if (this.monitoringOperator !=  operator && this.monitoringOperator != null) {
+        if (this.monitoringOperator != operator && this.monitoringOperator != null) {
             this.monitoringOperator.setArea(null);
             this.monitoringOperator = operator;
             monitoringOperator.setArea(this);

@@ -4,9 +4,12 @@ import models.exceptions.InheritanceTypeException;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FirearmUse {
 
+    private static List<FirearmUse> firearmUseExtent = new ArrayList<>();
     private LocalDate date;
     private LocalTime time;
     private String typeRounds;
@@ -21,6 +24,7 @@ public class FirearmUse {
         this.numRounds = numRounds;
         shooter.addFirearmUse(this);
         firearm.addFirearmUse(this);
+        firearmUseExtent.add(this);
     }
 
     public void setFirearm(Firearm firearm) {

@@ -11,6 +11,7 @@ import static models.providers.RegexPatternProvider.NUM_REGISTRATION_PATTERN;
 
 public class Firearm {
 
+    private static List<Firearm> firearmExtent = new ArrayList<>();
     private String model;
     private String numRegistration;
     private String type;
@@ -24,6 +25,7 @@ public class Firearm {
         this.type = type;
         this.caliber = caliber;
         this.magSize = magSize;
+        firearmExtent.add(this);
     }
 
     private void setNumRegistration(String numRegistration) throws IllegalRegistrationNumberException {
