@@ -4,12 +4,13 @@ import models.enums.AreaStatus;
 import models.exceptions.DescriptionTooLongException;
 import models.exceptions.InheritanceTypeException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import static models.exceptions.ExceptionMessageProvider.*;
 
-public class Area {
+public class Area implements Serializable {
 
     private static List<Area> allAreas = new ArrayList<>();
     private final String name;

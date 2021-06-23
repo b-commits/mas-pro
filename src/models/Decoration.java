@@ -2,16 +2,20 @@ package models;
 
 import models.exceptions.InheritanceTypeException;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static models.exceptions.ExceptionMessageProvider.OVER_LIMIT_ERROR_MESSAGE;
 
-public class Decoration {
+public class Decoration implements Serializable {
 
+    private static final int MAX_DESCRIPTION_LENGTH = 500;
     private final String name;
-    private String description;
     private final LocalDate dateReceived;
-    private Person receiver;
+    private String description;
+    private List<Person> receivers = new ArrayList<>();
 
     public Decoration(String name, String description, LocalDate dateReceived) throws Exception {
         this.name = name;
@@ -20,17 +24,15 @@ public class Decoration {
     }
 
     private void setDescription(String description) throws Exception {
-        if (description.length() < 500) this.description = description;
+        if (description.length() < MAX_DESCRIPTION_LENGTH) this.description = description;
         else throw new Exception(OVER_LIMIT_ERROR_MESSAGE);
     }
 
-    public void setReceiver(Person receiver) throws InheritanceTypeException {
-        if (this.receiver != null) {
-            this.receiver.removeDecoration(this);
-            this.receiver = null;
+    public void addReceiver(Person receiver) throws InheritanceTypeException {
+        if (!receivers.contains(receiver)) {
+            receivers.add(receiver);
+            receiver.addDecoration(this);
         }
-        this.receiver = receiver;
-        receiver.addDecoration(this);
     }
 
     /**

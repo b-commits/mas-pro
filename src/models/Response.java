@@ -1,23 +1,37 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.time.temporal.ChronoUnit.MINUTES;
 
-public class Response {
+public class Response implements Serializable {
 
     private final LocalTime timeReceived;
     private final LocalTime timeArrived;
-    private final int numWitnessTestimony;
+    private final List<String> witnessTestimonies = new ArrayList<>();
     private Event event;
     private OperationalGroup operationalGroup;
 
-    public Response(LocalTime timeReceived, LocalTime timeArrived, int numWitnessTestimony, Event event, OperationalGroup operationalGroup) {
+    public Response(LocalTime timeReceived, LocalTime timeArrived, Event event, OperationalGroup operationalGroup) {
         this.timeReceived = timeReceived;
         this.timeArrived = timeArrived;
-        this.numWitnessTestimony = numWitnessTestimony;
         event.addResponse(this);
         operationalGroup.addResponse(this);
+    }
+
+    // Demonstration purposes only.
+    @SuppressWarnings("unused")
+    public void addWitnessTestimony(String testimony) {
+        witnessTestimonies.add(testimony);
+    }
+
+    // Demonstration purposes only.
+    @SuppressWarnings("unused")
+    public void getWitnessTestimonies() {
+        witnessTestimonies.forEach(System.out::println);
     }
 
     public void setOperationalGroup(OperationalGroup operationalGroup) {
@@ -46,12 +60,6 @@ public class Response {
     public long getResponseTime() {
         return MINUTES.between(timeArrived, timeReceived);
     }
-
-    @SuppressWarnings("unused")
-    public int getNumWitnessTestimony() {
-        return numWitnessTestimony;
-    }
-
 
     public void resetOperationalGroup() {
         this.operationalGroup = null;

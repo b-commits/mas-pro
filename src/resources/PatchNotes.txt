@@ -1,0 +1,15 @@
+========================================================================================================================
+*Zorganizowana Grupa Przestępcza - usunąłem atrybut wartość, bo zapomniałem, co miałem na myśli.
+                                 - usunąłem atrybut liczba członków, bo można to wyciągnąć z pola Członkowie
+                                 - metoda wyświetlGrupyWRejonie() jest niepotrzebna, jeżeli mam w Rejonie getCriminalOrganizations();
+========================================================================================================================
+*Rejon                           - na diagramie powinno być dodajGrupęPrzestępczą(), a nie ustawGrupęPrzestępczą().
+========================================================================================================================
+*Sprawca                         - na diagramie lepszą nazwą byłoby dodajGrupę(Grupa) zamiast ustawGrupę.
+                                 - na diagramie licznośc między ZGP: * - 1..*
+========================================================================================================================
+*Udział w zdarzeniu              - pomylone liczności, powinno być:
+                                 Zdarzenie 1 - * Udziały * - 1 Sprawca
+========================================================================================================================
+*Odznaczenie                     - nie można wyświetlić odznaczonych przy tej liczności. zamieniłem na wiele do wiele.
+========================================================================================================================

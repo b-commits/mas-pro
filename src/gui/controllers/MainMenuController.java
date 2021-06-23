@@ -34,7 +34,6 @@ public class MainMenuController implements Initializable {
     @FXML private TableColumn<Perpetrator, String> colMemHeight;
     @FXML private TableColumn<Perpetrator, String> colMemWeight;
     @FXML private TableColumn<Perpetrator, String> colMemStatus;
-    @FXML private TableColumn<Perpetrator, String> colMemNumOffenses;
 
     /**
      * Sets cell value factories on all fields in organization table in order to handle events. PropertyValueFactory args
@@ -72,6 +71,14 @@ public class MainMenuController implements Initializable {
         });
     }
 
+    private void handleMemChoice() {
+        tblMem.setOnMouseClicked((MouseEvent event) -> {
+            if(event.getButton().equals(MouseButton.PRIMARY)) {
+                log(tblMem.getSelectionModel().getSelectedItem());
+            }
+        });
+    }
+
     /**
      * Sets default error message in case no content is present.
      */
@@ -84,6 +91,7 @@ public class MainMenuController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setPlaceholders();
         handleOrgChoice();
+        handleMemChoice();
         populatePerpetrators();
         populateOrganizations();
     }

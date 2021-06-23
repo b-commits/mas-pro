@@ -14,6 +14,8 @@ public class ExceptionMessageProvider {
     public static final String DESCRIPTION_TOO_LONG_MESSAGE = "Description must be shorter than 500 characters.";
     public static final String ALREADY_LOCKED_EXCEPTION_MESSAGE = "The area has already been locked down.";
     public static final String ILLEGAL_DANGER_LEVEL = "Danger level must be either 1, 2 or 3.";
+    public static final String LICENSE_IN_USE_MESSAGE = "The license number is already in use";
+    public static final String LICENSE_TOO_SHORT_MESSAGE = "The license number is too short.";
 
 
 }

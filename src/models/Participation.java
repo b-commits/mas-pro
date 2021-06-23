@@ -2,11 +2,12 @@ package models;
 
 import models.exceptions.IdentikitDescriptionTooLongException;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
 import static models.exceptions.ExceptionMessageProvider.IDENTIKIT_OVER_LIMIT_ERROR;
 
-public class Participation {
+public class Participation implements Serializable {
 
     private static final int IDENTIKIT_DESC_MAX_LENGTH = 500;
     private final LocalTime timeSpotted;
@@ -15,7 +16,8 @@ public class Participation {
     private Event event;
 
 
-    public Participation(LocalTime timeSpotted, String identikitDescription, Perpetrator perpetrator, Event event) throws IdentikitDescriptionTooLongException {
+    public Participation(LocalTime timeSpotted, String identikitDescription, Perpetrator perpetrator, Event event)
+            throws IdentikitDescriptionTooLongException {
         this.timeSpotted = timeSpotted;
         setIdentikitDescription(identikitDescription);
         perpetrator.addParticipation(this);
@@ -24,7 +26,8 @@ public class Participation {
 
     public void setIdentikitDescription(String identikitDescription) throws IdentikitDescriptionTooLongException {
         if (identikitDescription.length() < IDENTIKIT_DESC_MAX_LENGTH) this.identikitDescription = identikitDescription;
-        else throw new IdentikitDescriptionTooLongException(String.format(IDENTIKIT_OVER_LIMIT_ERROR, IDENTIKIT_DESC_MAX_LENGTH));
+        else throw new IdentikitDescriptionTooLongException(
+                String.format(IDENTIKIT_OVER_LIMIT_ERROR, IDENTIKIT_DESC_MAX_LENGTH));
     }
 
     public void setPerpetrator(Perpetrator perpetrator) {

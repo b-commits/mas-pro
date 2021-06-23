@@ -2,6 +2,7 @@ package models;
 
 import models.exceptions.IllegalRegistrationNumberException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,7 +10,7 @@ import java.util.regex.Matcher;
 import static models.exceptions.ExceptionMessageProvider.FIREARM_NUM_REGISTRATION_ERROR_MESSAGE;
 import static models.providers.RegexPatternProvider.NUM_REGISTRATION_PATTERN;
 
-public class Firearm {
+public class Firearm implements Serializable {
 
     private final String model;
     private String numRegistration;
@@ -18,7 +19,8 @@ public class Firearm {
     private final String magSize;
     private final List<FirearmUse> firearmUses = new ArrayList<>();
 
-    public Firearm(String model, String numRegistration, String type, String caliber, String magSize) throws IllegalRegistrationNumberException {
+    public Firearm(String model, String numRegistration, String type, String caliber, String magSize)
+            throws IllegalRegistrationNumberException {
         this.setNumRegistration(numRegistration);
         this.model = model;
         this.type = type;
@@ -42,6 +44,18 @@ public class Firearm {
 
     public void removeFirearmUse(FirearmUse firearmUse) {
         firearmUses.removeIf(firearmUse1 -> firearmUse1 == firearmUse);
+    }
+
+    @Override
+    public String toString() {
+        return "Firearm{" +
+                "model='" + model + '\'' +
+                ", numRegistration='" + numRegistration + '\'' +
+                ", type='" + type + '\'' +
+                ", caliber='" + caliber + '\'' +
+                ", magSize='" + magSize + '\'' +
+                ", firearmUsesSize=" + firearmUses.size() +
+                '}';
     }
 
     /**

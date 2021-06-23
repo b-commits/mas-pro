@@ -1,12 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 import static models.exceptions.ExceptionMessageProvider.REGISTRATION_ERROR_MESSAGE;
 
-public class PoliceVehicle {
+public class PoliceVehicle implements Serializable {
 
     private static final Map<String, PoliceVehicle> registrationNumbers = new HashMap<>();
     private final String brand;
@@ -15,7 +16,8 @@ public class PoliceVehicle {
     private final int mileage;
     private OperationalGroup operationalGroup;
 
-    public PoliceVehicle(String brand, String model, LocalDate year, int mileage, String registrationNumber, OperationalGroup group) throws Exception {
+    public PoliceVehicle(String brand, String model, LocalDate year, int mileage,
+                         String registrationNumber, OperationalGroup group) throws Exception {
         this.brand = brand;
         this.model = model;
         this.year = year;

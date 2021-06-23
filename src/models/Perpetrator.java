@@ -18,7 +18,8 @@ public class Perpetrator implements Serializable {
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private final List<String> offenses = new ArrayList<>();
 
-    public Perpetrator(String idNumber, String alias, int weight, int height, PerpetratorStatus perpetratorStatus, CriminalOrganization criminalOrganization) {
+    public Perpetrator(String idNumber, String alias, int weight, int height,
+                       PerpetratorStatus perpetratorStatus, CriminalOrganization criminalOrganization) {
         this.idNumber = idNumber;
         this.alias = alias;
         this.weight = weight;
