@@ -9,28 +9,19 @@ import java.util.List;
 
 public class CriminalOrganization implements Serializable {
 
-    private static List<CriminalOrganization> criminalOrganizationExtent = new ArrayList<>();
-    private String name;
-    private String business;
-    private OrganizationStatus organizationStatus;
+    private final List<Perpetrator> members = new ArrayList<>();
+    private final String name;
+    private final String business;
     private InternationalStatus internationalStatus;
+    private OrganizationStatus organizationStatus;
     private Area area;
-    private List<Perpetrator> members = new ArrayList<>();
 
-    public CriminalOrganization(String name, String business,
-                                OrganizationStatus organizationStatus,
+    public CriminalOrganization(String name, String business, OrganizationStatus organizationStatus,
                                 InternationalStatus internationalStatus) {
         this.name = name;
         this.business = business;
         this.organizationStatus = organizationStatus;
         this.internationalStatus = internationalStatus;
-        criminalOrganizationExtent.add(this);
-    }
-
-    @Deprecated
-    public CriminalOrganization(String name, String business) {
-        this.name = name;
-        this.business = business;
     }
 
     public void addMember(Perpetrator member) {
@@ -38,10 +29,6 @@ public class CriminalOrganization implements Serializable {
             members.add(member);
             member.addCriminalOrganization(this);
         }
-    }
-
-    public Area getArea() {
-        return area;
     }
 
     public void setArea(Area area) {
@@ -53,16 +40,53 @@ public class CriminalOrganization implements Serializable {
         area.addCriminalOrganization(this);
     }
 
+    public List<Perpetrator> getMembers() {
+        return members;
+    }
+
+
+    /**
+     * The following methods are required by the project requirements, but I have not found any way
+     * to use them any where in the code.
+     */
+
+    @SuppressWarnings("unused")
+    public void updateStatus(OrganizationStatus organizationStatus) {
+        this.organizationStatus = this.organizationStatus == OrganizationStatus.ACTIVE ?
+                OrganizationStatus.DISBANDED : OrganizationStatus.ACTIVE;
+    }
+
+    @SuppressWarnings("unused")
+    public void updateInternationalStatus(InternationalStatus internationalStatus) {
+        this.internationalStatus = this.internationalStatus == InternationalStatus.WANTED ?
+                InternationalStatus.NOT_WANTED : InternationalStatus.WANTED;
+    }
+
+    /**
+     * The following methods are implicitly required by JavaFX even though they might not be used anywhere
+     * else in the code. Deleting any of them will prevent GUI from populating appropriate tables.
+     */
+
+    @SuppressWarnings("unused")
+    public Area getArea() {
+        return area;
+    }
+
+    @SuppressWarnings("unused")
     public String getName() {
         return name;
     }
 
+    @SuppressWarnings("unused")
     public String getBusiness() { return business; }
 
+    @SuppressWarnings("unused")
     public String getInternationalStatus() { return internationalStatus.name(); }
 
+    @SuppressWarnings("unused")
     public String getOrganizationStatus() { return organizationStatus.name(); }
 
+    @SuppressWarnings("unused")
     public void removeCriminalOrganization(Perpetrator member) {
         members.removeIf(member1 -> member1 == member);
     }
@@ -78,9 +102,5 @@ public class CriminalOrganization implements Serializable {
                 ", internationalStatus=" + internationalStatus +
                 ", numberOfMembers=" + members.size() +
                 '}';
-    }
-
-    public List<Perpetrator> getMembers() {
-        return members;
     }
 }

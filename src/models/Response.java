@@ -8,10 +8,10 @@ import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class Response {
 
-    private static List<Response> responseExtent = new ArrayList<>();
-    private LocalTime timeReceived;
-    private LocalTime timeArrived;
-    private int numWitnessTestimony;
+    private static final List<Response> responseExtent = new ArrayList<>();
+    private final LocalTime timeReceived;
+    private final LocalTime timeArrived;
+    private final int numWitnessTestimony;
     private Event event;
     private OperationalGroup operationalGroup;
 

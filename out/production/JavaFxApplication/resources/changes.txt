@@ -1,3 +1,10 @@
+*Zorganizowana Grupa Przestępcza - usunąłem atrybut wartość, bo zapomniałem, co miałem na myśli.
+                                 - usunąłem atrybut liczba członków, bo można to wyciągnąć z pola Członkowie
+                                 - metoda wyświetlGrupyWRejonie() jest niepotrzebna, jeżeli mam w Rejonie getCriminalOrganizations();
+
+*Rejon                           - na diagramie powinno być dodajGrupęPrzestępczą(), a nie ustawGrupęPrzestępczą().
+
+
 zmieniona liczność participation
 
 operation group - liczba obsłużonych zdarzeń jest bez sensu, bo można responses.size()

@@ -58,14 +58,9 @@
             </DropShadow>
          </effect>
          <children>
-            <Button layoutX="107.0" layoutY="187.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="120.0" style="-fx-background-color: #0c214a;" text="Grupy" textFill="WHITE">
+            <Button layoutX="128.0" layoutY="188.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="120.0" style="-fx-background-color: #0c214a;" text="Grupy" textFill="WHITE">
                <font>
                   <Font size="24.0" />
-               </font>
-            </Button>
-            <Button layoutX="108.0" layoutY="365.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="89.0" style="-fx-background-color: #0c214a;" text="Inne" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
                </font>
             </Button>
             <Label layoutX="30.0" layoutY="1013.0" prefHeight="27.0" prefWidth="218.0" text="Zalogowano jako Jan Kowalski" textFill="WHITE">
@@ -77,37 +72,37 @@
                   <Font name="Segoe UI Bold" size="38.0" />
                </font>
             </Text>
-            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="20.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="16.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_groups_white_48dp.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="87.0" fitWidth="52.0" layoutX="19.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="87.0" fitWidth="52.0" layoutX="15.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_wifi_tethering_error_rounded_white_24dp.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="54.0" layoutX="18.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="54.0" layoutX="14.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_local_police_white_48dp.png" />
                </image>
             </ImageView>
-            <Button layoutX="107.0" layoutY="270.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="142.0" style="-fx-background-color: #0c214a;" text="Zdarzenia" textFill="WHITE">
+            <Button layoutX="117.0" layoutY="270.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="142.0" style="-fx-background-color: #0c214a;" text="Zdarzenia" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="123.0" layoutY="365.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" style="-fx-background-color: #0c214a;" text="Osoby" textFill="WHITE">
+            <Button layoutX="133.0" layoutY="365.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" style="-fx-background-color: #0c214a;" text="Osoby" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="123.0" layoutY="448.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" style="-fx-background-color: #0c214a;" text="Info" textFill="WHITE">
+            <Button layoutX="133.0" layoutY="440.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" style="-fx-background-color: #0c214a;" text="Info" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Button>
-            <ImageView fitHeight="87.0" fitWidth="52.0" layoutX="19.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="87.0" fitWidth="52.0" layoutX="15.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/busio/Desktop/mas-pro/src/gui/resources/outline_wifi_tethering_error_rounded_white_24dp.png" />
                </image>
@@ -155,10 +150,10 @@
       </Label>
       <TableView fx:id="tblOrg" layoutX="323.0" layoutY="161.0" prefHeight="840.0" prefWidth="715.0">
         <columns>
-          <TableColumn fx:id="colOrgName" prefWidth="150.0" text="Nazwa" />
-          <TableColumn fx:id="colOrgBusiness" prefWidth="198.0" text="Działalność" />
-            <TableColumn fx:id="colOrgStatus" prefWidth="169.0" text="Status" />
-            <TableColumn fx:id="colOrgIntStatus" prefWidth="197.0" text="Status międzynarodowy" />
+          <TableColumn fx:id="colOrgName" prefWidth="229.0" text="Nazwa" />
+          <TableColumn fx:id="colOrgBusiness" prefWidth="190.0" text="Działalność" />
+            <TableColumn fx:id="colOrgStatus" prefWidth="140.0" text="Status" />
+            <TableColumn fx:id="colOrgIntStatus" prefWidth="155.0" text="Status międzynarodowy" />
         </columns>
       </TableView>
       <TableView fx:id="tblMem" layoutX="1151.0" layoutY="161.0" prefHeight="840.0" prefWidth="715.0">
@@ -166,9 +161,9 @@
             <TableColumn fx:id="colMemID" prefWidth="107.0" text="ID" />
             <TableColumn fx:id="colMemAlias" prefWidth="111.0" text="Alias" />
             <TableColumn fx:id="colMemHeight" prefWidth="132.0" text="Wzrost [cm]" />
-            <TableColumn fx:id="colMemWeight" prefWidth="115.0" text="Waga [kg]" />
-            <TableColumn fx:id="colMemStatus" prefWidth="124.0" text="Status" />
-            <TableColumn fx:id="colMemNumOffenses" prefWidth="125.0" text="Przestępstwa" />
+            <TableColumn fx:id="colMemWeight" prefWidth="187.0" text="Waga [kg]" />
+            <TableColumn fx:id="colMemStatus" prefWidth="175.0" text="Status" />
+            <TableColumn fx:id="colMemNumOffenses" minWidth="2.0" prefWidth="2.0" />
          </columns>
       </TableView>
       <Label layoutX="866.0" layoutY="1026.0" opacity="0.28" prefHeight="27.0" prefWidth="454.0" style="co: #0c214a;" text="Wybierz grupę, aby wyświetlić informację o jej członkach" textFill="#0c214a">

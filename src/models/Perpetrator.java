@@ -62,8 +62,8 @@ public class Perpetrator implements Serializable {
         return height;
     }
 
-    public PerpetratorStatus getPerpetratorStatus() {
-        return perpetratorStatus;
+    public String getPerpetratorStatus() {
+        return perpetratorStatus.name();
     }
 
     @Override

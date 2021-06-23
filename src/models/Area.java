@@ -1,27 +1,30 @@
 package models;
 
 import models.enums.AreaStatus;
+import models.exceptions.DescriptionTooLongException;
 import models.exceptions.InheritanceTypeException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static models.exceptions.ExceptionMessageProvider.DESCRIPTION_TOO_LONG_MESSAGE;
+
 public class Area {
 
-    private static final List<Area> areaExtent = new ArrayList<>();
+    private static List<Area> allAreas = new ArrayList<>();
     private final String name;
-    private final String description;
-    private final String dangerLevel;
-    private final AreaStatus areaStatus;
     private final List<CriminalOrganization> criminalOrganizations = new ArrayList<>();
+    private String dangerLevel;
+    private AreaStatus areaStatus;
+    private String description;
     private Person monitoringOperator;
 
-    public Area(String name, String description, String dangerLevel) {
+    public Area(String name, String description, String dangerLevel) throws DescriptionTooLongException {
         this.name = name;
-        this.description = description;
         this.dangerLevel = dangerLevel;
         this.areaStatus = AreaStatus.OPEN;
-        areaExtent.add(this);
+        setDescription(description);
+        allAreas.add(this);
     }
 
     public void addCriminalOrganization(CriminalOrganization criminalOrganization) {
@@ -29,6 +32,22 @@ public class Area {
             criminalOrganizations.add(criminalOrganization);
             criminalOrganization.setArea(this);
         }
+    }
+
+    public List<CriminalOrganization> getCriminalOrganizations() {
+        return criminalOrganizations;
+    }
+
+    public void setAreaStatus(AreaStatus areaStatus) {
+        this.areaStatus = areaStatus;
+    }
+
+    public void setDangerLevel(String dangerLevel) {
+        this.dangerLevel = dangerLevel;
+    }
+
+    public static void enforceTotalLockdown() {
+        allAreas.forEach(area -> area.setAreaStatus(AreaStatus.LOCKDOWN));
     }
 
     public void removeCriminalOrganization(CriminalOrganization criminalOrganization) {
@@ -61,4 +80,10 @@ public class Area {
             this.monitoringOperator.setArea(this);
         }
     }
+
+    public void setDescription(String description) throws DescriptionTooLongException {
+        if (description.length() > 500) throw new DescriptionTooLongException(DESCRIPTION_TOO_LONG_MESSAGE);
+        else this.description = description;
+    }
+
 }

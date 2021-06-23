@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -17,8 +18,7 @@ import java.util.ResourceBundle;
 
 import static gui.resources.SampleData.generateOrganizations;
 import static helpers.Logger.log;
-import static models.exceptions.ExceptionMessageProvider.NO_CONTENT_MEM_MESSAGE;
-import static models.exceptions.ExceptionMessageProvider.NO_CONTENT_ORG_MESSAGE;
+import static models.exceptions.ExceptionMessageProvider.*;
 
 public class MainMenuController implements Initializable {
 
@@ -34,6 +34,7 @@ public class MainMenuController implements Initializable {
     @FXML private TableColumn<Perpetrator, String> colMemHeight;
     @FXML private TableColumn<Perpetrator, String> colMemWeight;
     @FXML private TableColumn<Perpetrator, String> colMemStatus;
+    @FXML private TableColumn<Perpetrator, String> colMemNumOffenses;
 
     /**
      * Sets cell value factories on all fields in organization table in order to handle events. PropertyValueFactory args
@@ -56,7 +57,7 @@ public class MainMenuController implements Initializable {
         colMemAlias.setCellValueFactory(new PropertyValueFactory<>("alias"));
         colMemHeight.setCellValueFactory(new PropertyValueFactory<>("height"));
         colMemWeight.setCellValueFactory(new PropertyValueFactory<>("weight"));
-        colMemStatus.setCellValueFactory(new PropertyValueFactory<>("idNumber"));
+        colMemStatus.setCellValueFactory(new PropertyValueFactory<>("perpetratorStatus"));
     }
 
     /**
@@ -75,6 +76,7 @@ public class MainMenuController implements Initializable {
      * Sets default error message in case no content is present.
      */
     private void setPlaceholders() {
+        tblOrg.setTooltip(new Tooltip(ON_NO_ACTION_TOOLTIP));
         tblOrg.setPlaceholder(new Label(NO_CONTENT_ORG_MESSAGE));
         tblMem.setPlaceholder(new Label(NO_CONTENT_MEM_MESSAGE));
     }

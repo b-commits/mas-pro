@@ -10,6 +10,8 @@ public class ExceptionMessageProvider {
     public static final String IDENTIKIT_OVER_LIMIT_ERROR = "No more than %s characters allowed.";
     public static final String NO_CONTENT_ORG_MESSAGE = "Brak danych o organizacjach przestępczych.";
     public static final String NO_CONTENT_MEM_MESSAGE = "Brak danych o przestępcach.";
+    public static final String ON_NO_ACTION_TOOLTIP = "Wciśnij grupę, aby wyswietlić jej członków";
+    public static final String DESCRIPTION_TOO_LONG_MESSAGE = "Description must be shorter than 500 characters.";
 
 
 }

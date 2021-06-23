@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class ExtentIO {
 
-    public static final String POLICE_EXTENT_DIR = "operational-group.ser";
+    public static final String POLICE_EXTENT_DIR = "app-data.ser";
 
     public static void writeExtent(ArrayList<?> extent) {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(POLICE_EXTENT_DIR))) {
