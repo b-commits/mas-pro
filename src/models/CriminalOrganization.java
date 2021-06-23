@@ -40,6 +40,10 @@ public class CriminalOrganization implements Serializable {
         area.addCriminalOrganization(this);
     }
 
+    public void resetArea() {
+        this.area = null;
+    }
+
     public List<Perpetrator> getMembers() {
         return members;
     }
@@ -47,7 +51,7 @@ public class CriminalOrganization implements Serializable {
 
     /**
      * The following methods are required by the project requirements, but I have not found any way
-     * to use them any where in the code.
+     * to use them anywhere else in the code. Hence, suppressed warnings.
      */
 
     @SuppressWarnings("unused")
@@ -87,8 +91,9 @@ public class CriminalOrganization implements Serializable {
     public String getOrganizationStatus() { return organizationStatus.name(); }
 
     @SuppressWarnings("unused")
-    public void removeCriminalOrganization(Perpetrator member) {
-        members.removeIf(member1 -> member1 == member);
+    public void removeMember(Perpetrator member) {
+        if (member.getCriminalOrganizations().contains(this)) member.removeOrganization(this);
+        members.remove(member);
     }
 
     @Override

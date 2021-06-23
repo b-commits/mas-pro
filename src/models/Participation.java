@@ -3,16 +3,13 @@ package models;
 import models.exceptions.IdentikitDescriptionTooLongException;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import static models.exceptions.ExceptionMessageProvider.IDENTIKIT_OVER_LIMIT_ERROR;
 
 public class Participation {
 
     private static final int IDENTIKIT_DESC_MAX_LENGTH = 500;
-    private static List<Participation> participationExtent = new ArrayList<>();
-    private LocalTime timeSpotted;
+    private final LocalTime timeSpotted;
     private String identikitDescription;
     private Perpetrator perpetrator;
     private Event event;
@@ -23,7 +20,6 @@ public class Participation {
         setIdentikitDescription(identikitDescription);
         perpetrator.addParticipation(this);
         event.addParticipation(this);
-        participationExtent.add(this);
     }
 
     public void setIdentikitDescription(String identikitDescription) throws IdentikitDescriptionTooLongException {
@@ -49,6 +45,10 @@ public class Participation {
         event.addParticipation(this);
     }
 
+    public void resetPerpetrator() {
+        this.perpetrator = null;
+    }
+
     @Override
     public String toString() {
         return "Participation{" +
@@ -58,4 +58,5 @@ public class Participation {
                 ", event=" + event +
                 '}';
     }
+
 }

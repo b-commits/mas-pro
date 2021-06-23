@@ -12,6 +12,8 @@ public class ExceptionMessageProvider {
     public static final String NO_CONTENT_MEM_MESSAGE = "Brak danych o przestępcach.";
     public static final String ON_NO_ACTION_TOOLTIP = "Wciśnij grupę, aby wyswietlić jej członków";
     public static final String DESCRIPTION_TOO_LONG_MESSAGE = "Description must be shorter than 500 characters.";
+    public static final String ALREADY_LOCKED_EXCEPTION_MESSAGE = "The area has already been locked down.";
+    public static final String ILLEGAL_DANGER_LEVEL = "Danger level must be either 1, 2 or 3.";
 
 
 }

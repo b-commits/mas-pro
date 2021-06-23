@@ -4,6 +4,9 @@
 
 *Rejon                           - na diagramie powinno być dodajGrupęPrzestępczą(), a nie ustawGrupęPrzestępczą().
 
+*Sprawca                         - na diagramie lepszą nazwą byłoby dodajGrupę(Grupa) zamiast ustawGrupę.
+                                 - na diagramie licznośc między ZGP: * - 1..*
+
 
 zmieniona liczność participation
 

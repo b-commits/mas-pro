@@ -7,7 +7,7 @@ import models.exceptions.InheritanceTypeException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static models.exceptions.ExceptionMessageProvider.DESCRIPTION_TOO_LONG_MESSAGE;
+import static models.exceptions.ExceptionMessageProvider.*;
 
 public class Area {
 
@@ -19,11 +19,11 @@ public class Area {
     private String description;
     private Person monitoringOperator;
 
-    public Area(String name, String description, String dangerLevel) throws DescriptionTooLongException {
+    public Area(String name, String description, String dangerLevel) throws Exception {
         this.name = name;
-        this.dangerLevel = dangerLevel;
         this.areaStatus = AreaStatus.OPEN;
         setDescription(description);
+        setDangerLevel(dangerLevel);
         allAreas.add(this);
     }
 
@@ -38,12 +38,20 @@ public class Area {
         return criminalOrganizations;
     }
 
+    public void lockdownArea() throws Exception {
+        if (this.areaStatus == AreaStatus.OPEN) {
+            this.areaStatus = AreaStatus.LOCKDOWN;
+        } else throw new Exception(ALREADY_LOCKED_EXCEPTION_MESSAGE);
+    }
+
     public void setAreaStatus(AreaStatus areaStatus) {
         this.areaStatus = areaStatus;
     }
 
-    public void setDangerLevel(String dangerLevel) {
-        this.dangerLevel = dangerLevel;
+    public void setDangerLevel(String dangerLevel) throws Exception {
+        if (dangerLevel.equals("1") || dangerLevel.equals("2") || dangerLevel.equals("3")) {
+            this.dangerLevel = dangerLevel;
+        } else throw new Exception(ILLEGAL_DANGER_LEVEL);
     }
 
     public static void enforceTotalLockdown() {
@@ -52,6 +60,7 @@ public class Area {
 
     public void removeCriminalOrganization(CriminalOrganization criminalOrganization) {
         criminalOrganizations.removeIf(criminalOrganization1 -> criminalOrganization1 == criminalOrganization);
+        criminalOrganization.resetArea();
     }
 
     public String getName() {
