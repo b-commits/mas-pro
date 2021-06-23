@@ -3,9 +3,6 @@ package models;
 import models.enums.OperationalGroupStatus;
 import models.exceptions.InheritanceTypeException;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,19 +13,19 @@ import static models.exceptions.ExceptionMessageProvider.GROUP_ID_TAKEN_MESSAGE;
 
 public class OperationalGroup implements Serializable {
 
-    private static Map<String, OperationalGroup> groupIDs = new HashMap<>();
-    private static List<OperationalGroup> operationalGroupExtent = new ArrayList<>();
-    private List<Response> responses = new ArrayList<>();
-    private List<Person> members = new ArrayList<>();
-    private String name;
-    private OperationalGroupStatus operationalGroupStatus;
+    private static final ArrayList<OperationalGroup> allOpGroups = new ArrayList<>();
+    private static final Map<String, OperationalGroup> groupIDs = new HashMap<>();
+    private final List<Response> responses = new ArrayList<>();
+    private final List<Person> members = new ArrayList<>();
+    private final String name;
+    private final OperationalGroupStatus operationalGroupStatus;
     private PoliceVehicle vehicle;
 
     public OperationalGroup(String groupId, String name) throws Exception {
         this.setGroupID(groupId);
         this.name = name;
         this.operationalGroupStatus = OperationalGroupStatus.AWAITING_ORDERS;
-        operationalGroupExtent.add(this);
+        allOpGroups.add(this);
     }
 
     public void addResponse(Response response) {
@@ -63,6 +60,24 @@ public class OperationalGroup implements Serializable {
         }
     }
 
+    /**
+     * The following methods are needed for demonstration purposes only.
+     */
+    @SuppressWarnings("unused")
+    public int getNumGroups() {
+        return allOpGroups.size();
+    }
+
+    @SuppressWarnings("unused")
+    public OperationalGroupStatus getOperationalGroupStatus() {
+        return operationalGroupStatus;
+    }
+
+    @SuppressWarnings("unused")
+    public void getAllOpGroupInfo() {
+        allOpGroups.forEach(System.out::println);
+    }
+
     public String getName() {
         return this.name;
     }
@@ -76,10 +91,11 @@ public class OperationalGroup implements Serializable {
     }
 
     public void removeResponse(Response response) {
-        responses.removeIf(response1 -> response1 == response);
+        responses.remove(response);
+        response.resetOperationalGroup();
     }
 
-    public void removeOperationalGroup(Person member) {
+    public void removeMember(Person member) {
         members.removeIf(member1 -> member1 == member);
     }
 

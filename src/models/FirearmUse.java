@@ -4,16 +4,13 @@ import models.exceptions.InheritanceTypeException;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FirearmUse {
 
-    private static List<FirearmUse> firearmUseExtent = new ArrayList<>();
-    private LocalDate date;
-    private LocalTime time;
-    private String typeRounds;
-    private int numRounds;
+    private final LocalDate date;
+    private final LocalTime time;
+    private final String typeRounds;
+    private final int numRounds;
     private Person shooter;
     private Firearm firearm;
 
@@ -24,7 +21,6 @@ public class FirearmUse {
         this.numRounds = numRounds;
         shooter.addFirearmUse(this);
         firearm.addFirearmUse(this);
-        firearmUseExtent.add(this);
     }
 
     public void setFirearm(Firearm firearm) {
@@ -43,5 +39,29 @@ public class FirearmUse {
         }
         this.shooter = shooter;
         shooter.addFirearmUse(this);
+    }
+
+    /**
+     * The following getters are needed for demonstration purposes only.
+     */
+
+    @SuppressWarnings("unused")
+    public LocalDate getDate() {
+        return date;
+    }
+
+    @SuppressWarnings("unused")
+    public LocalTime getTime() {
+        return time;
+    }
+
+    @SuppressWarnings("unused")
+    public String getTypeRounds() {
+        return typeRounds;
+    }
+
+    @SuppressWarnings("unused")
+    public int getNumRounds() {
+        return numRounds;
     }
 }

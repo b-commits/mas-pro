@@ -1,34 +1,26 @@
 package models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static models.exceptions.ExceptionMessageProvider.REGISTRATION_ERROR_MESSAGE;
 
 public class PoliceVehicle {
 
-    private static Map<String, PoliceVehicle> registrationNumbers = new HashMap<>();
-    private static List<PoliceVehicle> policeVehicleExtent = new ArrayList<>();
-    private String brand;
-    private String model;
-    private LocalDate year;
-    private int mileage;
+    private static final Map<String, PoliceVehicle> registrationNumbers = new HashMap<>();
+    private final String brand;
+    private final String model;
+    private final LocalDate year;
+    private final int mileage;
     private OperationalGroup operationalGroup;
 
-    public PoliceVehicle(String brand, String model, LocalDate year, int mileage, String registrationNumber) throws Exception {
+    public PoliceVehicle(String brand, String model, LocalDate year, int mileage, String registrationNumber, OperationalGroup group) throws Exception {
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.mileage = mileage;
         setRegistrationNumber(registrationNumber);
-        policeVehicleExtent.add(this);
-    }
-
-    public PoliceVehicle(String brand, OperationalGroup group) {
-        this.brand = brand;
         this.operationalGroup = null;
         group.setVehicle(this);
     }

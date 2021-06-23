@@ -1,14 +1,11 @@
 package models;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class Response {
 
-    private static final List<Response> responseExtent = new ArrayList<>();
     private final LocalTime timeReceived;
     private final LocalTime timeArrived;
     private final int numWitnessTestimony;
@@ -21,7 +18,6 @@ public class Response {
         this.numWitnessTestimony = numWitnessTestimony;
         event.addResponse(this);
         operationalGroup.addResponse(this);
-        responseExtent.add(this);
     }
 
     public void setOperationalGroup(OperationalGroup operationalGroup) {
@@ -42,8 +38,22 @@ public class Response {
         event.addResponse(this);
     }
 
+    /**
+     * The following methods are needed for demonstration purposes only.
+     */
+
+    @SuppressWarnings("unused")
     public long getResponseTime() {
         return MINUTES.between(timeArrived, timeReceived);
     }
 
+    @SuppressWarnings("unused")
+    public int getNumWitnessTestimony() {
+        return numWitnessTestimony;
+    }
+
+
+    public void resetOperationalGroup() {
+        this.operationalGroup = null;
+    }
 }

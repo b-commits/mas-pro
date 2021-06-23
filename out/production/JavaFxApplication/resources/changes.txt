@@ -7,6 +7,11 @@
 *Sprawca                         - na diagramie lepszą nazwą byłoby dodajGrupę(Grupa) zamiast ustawGrupę.
                                  - na diagramie licznośc między ZGP: * - 1..*
 
+*Udział w zdarzeniu              - pomylone liczności, powinno być:
+                                 Zdarzenie 1 - * Udziały * - 1 Sprawca
+
+
+
 
 zmieniona liczność participation
 

@@ -15,29 +15,25 @@ public class Person {
 
     private static final int MAX_BONUS = 1500;
     private static final int MAX_WEEKLY_HOURS = 18;
-    private static List<Person> personExtent = new ArrayList<>();
-    private EnumSet<PersonType> personTypes = EnumSet.of(PersonType.DEFAULT_PERSON);
+    private final EnumSet<PersonType> personTypes = EnumSet.of(PersonType.DEFAULT_PERSON);
     // PersonType.DEFAULT_PERSON
-    private String numPersonalIdentity;
-    private String name;
-    private String email;
-    private String numPhone;
-
+    private final String numPersonalIdentity;
+    private final String name;
+    private final String email;
+    private final String numPhone;
     // PersonType.POLICE_OFFICER
     private String numLicense;
     private LocalDate serviceStart;
     private Ranks rank;
     private Integer bonus;
     private Integer numCoursesCompleted;
-    private List<Decoration> decorations = new ArrayList<>();
-    private List<FirearmUse> firearmUses = new ArrayList<>();
-    private List<String> awards = new ArrayList<>();
+    private final List<Decoration> decorations = new ArrayList<>();
+    private final List<FirearmUse> firearmUses = new ArrayList<>();
+    private final List<String> awards = new ArrayList<>();
     private OperationalGroup operationalGroup;
-
     // PersonType.DISPATCHER
     private Integer numCallsReceived;
     private Integer avgCallTime;
-
     // PersonType.MONITORING_OPERATOR
     private Area area;
     private Integer numDispatches;
@@ -47,7 +43,6 @@ public class Person {
         this.name = name;
         this.email = email;
         this.numPhone = numPhone;
-        personExtent.add(this);
     }
 
 
@@ -85,7 +80,7 @@ public class Person {
         if (!personTypes.contains(PersonType.POLICE_OFFICER))
             throw new InheritanceTypeException(String.format(TYPE_ERROR_MESSAGE, PersonType.POLICE_OFFICER));
         if (this.operationalGroup != null) {
-            this.operationalGroup.removeOperationalGroup(this);
+            this.operationalGroup.removeMember(this);
             this.operationalGroup = null;
         }
         this.operationalGroup = operationalGroup;
@@ -106,4 +101,37 @@ public class Person {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "numPersonalIdentity='" + numPersonalIdentity + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", numPhone='" + numPhone + '\'' +
+                '}';
+    }
+
+    /**
+     * The following getters are needed for demonstration purposes only.
+     */
+
+    @SuppressWarnings("unused")
+    public String getNumPersonalIdentity() {
+        return numPersonalIdentity;
+    }
+
+    @SuppressWarnings("unused")
+    public String getName() {
+        return name;
+    }
+
+    @SuppressWarnings("unused")
+    public String getEmail() {
+        return email;
+    }
+
+    @SuppressWarnings("unused")
+    public String getNumPhone() {
+        return numPhone;
+    }
 }

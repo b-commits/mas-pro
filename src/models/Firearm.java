@@ -11,13 +11,12 @@ import static models.providers.RegexPatternProvider.NUM_REGISTRATION_PATTERN;
 
 public class Firearm {
 
-    private static List<Firearm> firearmExtent = new ArrayList<>();
-    private String model;
+    private final String model;
     private String numRegistration;
-    private String type;
-    private String caliber;
-    private String magSize;
-    private List<FirearmUse> firearmUses = new ArrayList<>();
+    private final String type;
+    private final String caliber;
+    private final String magSize;
+    private final List<FirearmUse> firearmUses = new ArrayList<>();
 
     public Firearm(String model, String numRegistration, String type, String caliber, String magSize) throws IllegalRegistrationNumberException {
         this.setNumRegistration(numRegistration);
@@ -25,7 +24,6 @@ public class Firearm {
         this.type = type;
         this.caliber = caliber;
         this.magSize = magSize;
-        firearmExtent.add(this);
     }
 
     private void setNumRegistration(String numRegistration) throws IllegalRegistrationNumberException {
@@ -44,5 +42,35 @@ public class Firearm {
 
     public void removeFirearmUse(FirearmUse firearmUse) {
         firearmUses.removeIf(firearmUse1 -> firearmUse1 == firearmUse);
+    }
+
+    /**
+     * These methods can potentially be implicitly required by JavaFX GUI.
+     * Deleting them may break GUI tables.
+     */
+
+    @SuppressWarnings("unused")
+    public String getModel() {
+        return model;
+    }
+
+    @SuppressWarnings("unused")
+    public String getNumRegistration() {
+        return numRegistration;
+    }
+
+    @SuppressWarnings("unused")
+    public String getType() {
+        return type;
+    }
+
+    @SuppressWarnings("unused")
+    public String getCaliber() {
+        return caliber;
+    }
+
+    @SuppressWarnings("unused")
+    public String getMagSize() {
+        return magSize;
     }
 }
