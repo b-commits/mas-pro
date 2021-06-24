@@ -16,6 +16,5 @@ public class ExceptionMessageProvider {
     public static final String ILLEGAL_DANGER_LEVEL = "Danger level must be either 1, 2 or 3.";
     public static final String LICENSE_IN_USE_MESSAGE = "The license number is already in use";
     public static final String LICENSE_TOO_SHORT_MESSAGE = "The license number is too short.";
-
-
+    public static final String STORED_EXTENT_MESSAGE = "%s. Stored extents: %s";
 }

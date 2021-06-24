@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.exceptions.InheritanceTypeException;
 
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.util.List;
 
 import static models.exceptions.ExceptionMessageProvider.OVER_LIMIT_ERROR_MESSAGE;
 
-public class Decoration implements Serializable {
+public class Decoration extends ExtentManager implements Serializable {
 
     private static final int MAX_DESCRIPTION_LENGTH = 500;
     private final String name;
@@ -33,6 +34,16 @@ public class Decoration implements Serializable {
             receivers.add(receiver);
             receiver.addDecoration(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Decoration{" +
+                "name='" + name + '\'' +
+                ", dateReceived=" + dateReceived +
+                ", description='" + description + '\'' +
+                ", receivers=" + receivers +
+                '}';
     }
 
     /**

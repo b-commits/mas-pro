@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.enums.InternationalStatus;
 import models.enums.OrganizationStatus;
 
@@ -7,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CriminalOrganization implements Serializable {
+public class CriminalOrganization extends ExtentManager implements Serializable {
 
     private final List<Perpetrator> members = new ArrayList<>();
     private final String name;
@@ -18,6 +19,7 @@ public class CriminalOrganization implements Serializable {
 
     public CriminalOrganization(String name, String business, OrganizationStatus organizationStatus,
                                 InternationalStatus internationalStatus) {
+        super();
         this.name = name;
         this.business = business;
         this.organizationStatus = organizationStatus;

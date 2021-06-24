@@ -1,6 +1,7 @@
 package gui.controllers;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,9 +15,10 @@ import models.CriminalOrganization;
 import models.Perpetrator;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import static gui.resources.SampleData.generateOrganizations;
+import static helpers.ExtentIO.oldReadExtent;
 import static helpers.Logger.log;
 import static models.exceptions.ExceptionMessageProvider.*;
 
@@ -44,7 +46,9 @@ public class MainMenuController implements Initializable {
         colOrgName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colOrgIntStatus.setCellValueFactory(new PropertyValueFactory<>("internationalStatus"));
         colOrgStatus.setCellValueFactory(new PropertyValueFactory<>("organizationStatus"));
-        tblOrg.setItems(generateOrganizations());
+        ArrayList<CriminalOrganization> loadedData = (ArrayList<CriminalOrganization>) oldReadExtent();
+        ObservableList<CriminalOrganization> observableLoadedData = FXCollections.observableArrayList(loadedData);
+        tblOrg.setItems(observableLoadedData);
     }
 
     /**

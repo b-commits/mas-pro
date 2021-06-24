@@ -1,5 +1,7 @@
 package models;
 
+import helpers.ExtentManager;
+
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 
 import static java.time.temporal.ChronoUnit.MINUTES;
 
-public class Response implements Serializable {
+public class Response extends ExtentManager implements Serializable {
 
     private final LocalTime timeReceived;
     private final LocalTime timeArrived;
@@ -16,6 +18,7 @@ public class Response implements Serializable {
     private OperationalGroup operationalGroup;
 
     public Response(LocalTime timeReceived, LocalTime timeArrived, Event event, OperationalGroup operationalGroup) {
+        super();
         this.timeReceived = timeReceived;
         this.timeArrived = timeArrived;
         event.addResponse(this);

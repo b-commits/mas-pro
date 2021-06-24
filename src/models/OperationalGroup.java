@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.enums.OperationalGroupStatus;
 import models.exceptions.InheritanceTypeException;
 
@@ -11,7 +12,7 @@ import java.util.Map;
 
 import static models.exceptions.ExceptionMessageProvider.GROUP_ID_TAKEN_MESSAGE;
 
-public class OperationalGroup implements Serializable {
+public class OperationalGroup extends ExtentManager implements Serializable {
 
     private static final ArrayList<OperationalGroup> allOpGroups = new ArrayList<>();
     private static final Map<String, OperationalGroup> groupIDs = new HashMap<>();
@@ -22,6 +23,7 @@ public class OperationalGroup implements Serializable {
     private PoliceVehicle vehicle;
 
     public OperationalGroup(String groupId, String name) throws Exception {
+        super();
         this.setGroupID(groupId);
         this.name = name;
         this.operationalGroupStatus = OperationalGroupStatus.AWAITING_ORDERS;

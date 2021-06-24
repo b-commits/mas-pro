@@ -1,12 +1,13 @@
 package models;
 
+import helpers.ExtentManager;
 import models.enums.PerpetratorStatus;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Perpetrator implements Serializable {
+public class Perpetrator extends ExtentManager implements Serializable {
 
     private final String idNumber;
     private final String alias;
@@ -20,6 +21,7 @@ public class Perpetrator implements Serializable {
 
     public Perpetrator(String idNumber, String alias, int weight, int height,
                        PerpetratorStatus perpetratorStatus, CriminalOrganization criminalOrganization) {
+        super();
         this.idNumber = idNumber;
         this.alias = alias;
         this.weight = weight;

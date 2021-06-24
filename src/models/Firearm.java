@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.exceptions.IllegalRegistrationNumberException;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.util.regex.Matcher;
 import static models.exceptions.ExceptionMessageProvider.FIREARM_NUM_REGISTRATION_ERROR_MESSAGE;
 import static models.providers.RegexPatternProvider.NUM_REGISTRATION_PATTERN;
 
-public class Firearm implements Serializable {
+public class Firearm extends ExtentManager implements Serializable {
 
     private final String model;
     private String numRegistration;
@@ -21,6 +22,7 @@ public class Firearm implements Serializable {
 
     public Firearm(String model, String numRegistration, String type, String caliber, String magSize)
             throws IllegalRegistrationNumberException {
+        super();
         this.setNumRegistration(numRegistration);
         this.model = model;
         this.type = type;

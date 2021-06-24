@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.enums.AreaStatus;
 import models.exceptions.DescriptionTooLongException;
 import models.exceptions.InheritanceTypeException;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import static models.exceptions.ExceptionMessageProvider.*;
 
-public class Area implements Serializable {
+public class Area extends ExtentManager implements Serializable {
 
     private static List<Area> allAreas = new ArrayList<>();
     private final String name;
@@ -21,6 +22,7 @@ public class Area implements Serializable {
     private Person monitoringOperator;
 
     public Area(String name, String description, String dangerLevel) throws Exception {
+        super();
         this.name = name;
         this.areaStatus = AreaStatus.OPEN;
         setDescription(description);

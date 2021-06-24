@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.enums.PersonType;
 import models.enums.Ranks;
 import models.exceptions.InheritanceTypeException;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static models.exceptions.ExceptionMessageProvider.*;
 
-public class Person implements Serializable {
+public class Person extends ExtentManager implements Serializable {
 
     private static final List<Person> allPeople = new ArrayList<>();
     private static final int MIN_LICENSE_LENGTH = 7;
@@ -43,6 +44,7 @@ public class Person implements Serializable {
     private Integer numDispatches;
 
     public Person(String numPersonalIdentity, String name, String email, String numPhone) {
+        super();
         this.numPersonalIdentity = numPersonalIdentity;
         this.name = name;
         this.email = email;

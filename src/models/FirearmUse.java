@@ -1,12 +1,13 @@
 package models;
 
+import helpers.ExtentManager;
 import models.exceptions.InheritanceTypeException;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class FirearmUse implements Serializable {
+public class FirearmUse extends ExtentManager implements Serializable {
 
     private final LocalDate date;
     private final LocalTime time;
@@ -17,6 +18,7 @@ public class FirearmUse implements Serializable {
 
     public FirearmUse(LocalDate date, LocalTime time, String typeRounds, int numRounds, Person shooter, Firearm firearm)
             throws InheritanceTypeException {
+        super();
         this.date = date;
         this.time = time;
         this.typeRounds = typeRounds;

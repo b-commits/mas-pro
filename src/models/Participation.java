@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.exceptions.IdentikitDescriptionTooLongException;
 
 import java.io.Serializable;
@@ -7,7 +8,7 @@ import java.time.LocalTime;
 
 import static models.exceptions.ExceptionMessageProvider.IDENTIKIT_OVER_LIMIT_ERROR;
 
-public class Participation implements Serializable {
+public class Participation extends ExtentManager implements Serializable {
 
     private static final int IDENTIKIT_DESC_MAX_LENGTH = 500;
     private final LocalTime timeSpotted;
@@ -18,6 +19,7 @@ public class Participation implements Serializable {
 
     public Participation(LocalTime timeSpotted, String identikitDescription, Perpetrator perpetrator, Event event)
             throws IdentikitDescriptionTooLongException {
+        super();
         this.timeSpotted = timeSpotted;
         setIdentikitDescription(identikitDescription);
         perpetrator.addParticipation(this);

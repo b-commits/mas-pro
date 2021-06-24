@@ -1,5 +1,6 @@
 package models;
 
+import helpers.ExtentManager;
 import models.enums.EventType;
 import models.exceptions.InheritanceTypeException;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static models.exceptions.ExceptionMessageProvider.TYPE_ERROR_MESSAGE;
 
-public class Event implements Serializable {
+public class Event extends ExtentManager implements Serializable {
 
     private final LocalDate date;
     private final LocalTime time;
@@ -33,6 +34,7 @@ public class Event implements Serializable {
     private String assaultWeapon;
 
     public Event(LocalDate date, LocalTime time, String location) {
+        super();
         this.date = date;
         this.time = time;
         this.location = location;
