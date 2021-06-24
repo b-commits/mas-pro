@@ -13,10 +13,11 @@ import static models.exceptions.ExceptionMessageProvider.OVER_LIMIT_ERROR_MESSAG
 public class Decoration extends ExtentManager implements Serializable {
 
     private static final int MAX_DESCRIPTION_LENGTH = 500;
+    private final List<Person> receivers = new ArrayList<>();
     private final String name;
     private final LocalDate dateReceived;
     private String description;
-    private List<Person> receivers = new ArrayList<>();
+
 
     public Decoration(String name, String description, LocalDate dateReceived) throws Exception {
         this.name = name;

@@ -18,7 +18,7 @@ public class Person extends ExtentManager implements Serializable {
     private static final List<Person> allPeople = new ArrayList<>();
     private static final int MIN_LICENSE_LENGTH = 7;
     private static final int MAX_BONUS = 1500;
-    @SuppressWarnings("unused") private static final int DISPATCHER_MAX_WEEKLY_HOURS = 18;
+    private static final int DISPATCHER_MAX_WEEKLY_HOURS = 18;
     private final EnumSet<PersonType> personTypes = EnumSet.of(PersonType.DEFAULT_PERSON);
 
     private final String numPersonalIdentity;
@@ -294,5 +294,9 @@ public class Person extends ExtentManager implements Serializable {
     @SuppressWarnings("unused")
     public void getAwards() {
         awards.forEach(System.out::println);
+    }
+
+    public static int getDispatcherMaxWeeklyHours() {
+        return DISPATCHER_MAX_WEEKLY_HOURS;
     }
 }

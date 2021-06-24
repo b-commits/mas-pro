@@ -70,16 +70,15 @@ public class MainMenuController implements Initializable {
         tblOrg.setOnMouseClicked((MouseEvent event) -> {
             if(event.getButton().equals(MouseButton.PRIMARY)) {
                 log(tblOrg.getSelectionModel().getSelectedItem());
-                tblMem.setItems(FXCollections.observableArrayList(tblOrg.getSelectionModel().getSelectedItem().getMembers()));
+                tblMem.setItems(FXCollections.observableArrayList(
+                        tblOrg.getSelectionModel().getSelectedItem().getMembers()));
             }
         });
     }
 
     private void handleMemChoice() {
         tblMem.setOnMouseClicked((MouseEvent event) -> {
-            if(event.getButton().equals(MouseButton.PRIMARY)) {
-                log(tblMem.getSelectionModel().getSelectedItem());
-            }
+            if(event.getButton().equals(MouseButton.PRIMARY)) log(tblMem.getSelectionModel().getSelectedItem());
         });
     }
 

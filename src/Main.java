@@ -1,4 +1,6 @@
 import models.Decoration;
+import models.OperationalGroup;
+import models.PoliceVehicle;
 
 import java.time.LocalDate;
 
@@ -12,7 +14,11 @@ public class Main {
          * powiązane asocjacją.
          */
         Decoration d1 = new Decoration("Medal of Honor", "as", LocalDate.now());
+        OperationalGroup op1 = new OperationalGroup("123", "op-group-1");
+        PoliceVehicle v1 = new PoliceVehicle("KIA", "X", LocalDate.now(), 1500, "123", op1);
         writeAllExtents();
         showExtent(Decoration.class);
+        showExtent(OperationalGroup.class);
+        showExtent(PoliceVehicle.class);
     }
 }

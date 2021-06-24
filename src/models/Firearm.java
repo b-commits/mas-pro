@@ -13,8 +13,8 @@ import static models.providers.RegexPatternProvider.NUM_REGISTRATION_PATTERN;
 
 public class Firearm extends ExtentManager implements Serializable {
 
-    private final String model;
     private String numRegistration;
+    private final String model;
     private final String type;
     private final String caliber;
     private final String magSize;
@@ -41,7 +41,6 @@ public class Firearm extends ExtentManager implements Serializable {
             firearmUses.add(firearmUse);
             firearmUse.setFirearm(this);
         }
-
     }
 
     public void removeFirearmUse(FirearmUse firearmUse) {

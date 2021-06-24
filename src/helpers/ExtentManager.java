@@ -10,6 +10,11 @@ import java.util.Map;
 
 import static models.exceptions.ExceptionMessageProvider.STORED_EXTENT_MESSAGE;
 
+/**
+ * All business classes should extent this class in order to be serialised.
+ * ExtentIO classes has all the methods needed to output serialised .ser files
+ * for either a single extent of a given class or a top-level extent of all business classes.
+ */
 public abstract class ExtentManager implements Serializable {
 
     public static final Map<Class, List<ExtentManager>> allExtents = new Hashtable<>();
